@@ -1,4 +1,5 @@
 import { Expense, CATEGORIES } from '@/types/expense';
+import { generateSeedExpenses } from '@/lib/seedData';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 
@@ -8,7 +9,14 @@ export function loadExpenses(): Expense[] {
   if (typeof window === 'undefined') return [];
   try {
     const data = localStorage.getItem(STORAGE_KEY);
-    return data ? JSON.parse(data) : [];
+    if (data) {
+      const parsed = JSON.parse(data);
+      if (parsed.length > 0) return parsed;
+    }
+    // Seed with sample data on first load
+    const seed = generateSeedExpenses();
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(seed));
+    return seed;
   } catch {
     return [];
   }
