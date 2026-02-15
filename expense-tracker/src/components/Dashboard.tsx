@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 import { useExpenses } from '@/context/ExpenseContext';
 import { ExpenseCategory, CATEGORIES, CATEGORY_COLORS, CATEGORY_ICONS } from '@/types/expense';
 import { formatCurrency } from '@/lib/utils';
+import { exportDashboardToPDF } from '@/lib/storage';
 
 export default function Dashboard() {
   const { expenses, isLoaded } = useExpenses();
@@ -75,6 +76,21 @@ export default function Dashboard() {
 
   return (
     <div className="space-y-6">
+      {/* Header with PDF export */}
+      <div className="flex items-center justify-between">
+        <h2 className="text-2xl font-bold text-gray-900">Dashboard</h2>
+        <button
+          onClick={() => exportDashboardToPDF(expenses, stats.monthlyTrend)}
+          disabled={expenses.length === 0}
+          className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          </svg>
+          Export PDF
+        </button>
+      </div>
+
       {/* Summary Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <SummaryCard

@@ -7,6 +7,7 @@ const NAV_ITEMS = [
   { href: '/', label: 'Dashboard', icon: DashboardIcon },
   { href: '/expenses', label: 'Expenses', icon: ListIcon },
   { href: '/add', label: 'Add', icon: PlusIcon },
+  { href: '/feedback', label: 'Feedback', icon: FeedbackIcon },
 ];
 
 export default function Navigation() {
@@ -46,6 +47,11 @@ export default function Navigation() {
               );
             })}
           </nav>
+
+          {/* Credits */}
+          <span className="text-xs text-gray-400 hidden md:block">
+            Built by Naimesh Shah
+          </span>
         </div>
       </div>
     </header>
@@ -72,6 +78,14 @@ function PlusIcon({ className }: { className?: string }) {
   return (
     <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+    </svg>
+  );
+}
+
+function FeedbackIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
     </svg>
   );
 }
