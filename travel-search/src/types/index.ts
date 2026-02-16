@@ -1,4 +1,11 @@
+export interface Attraction {
+  name: string;
+  description: string;
+  imageUrl: string;
+}
+
 export interface Destination {
+  slug: string;
   name: string;
   country: string;
   description: string;
@@ -7,6 +14,8 @@ export interface Destination {
   highlights: string[];
   imageUrl: string;
   rating: number;
+  timezone: string;
+  attractions: Attraction[];
 }
 
 export interface FlightOption {

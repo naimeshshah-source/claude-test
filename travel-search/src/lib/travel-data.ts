@@ -2,6 +2,7 @@ import { Destination, FlightOption } from "@/types";
 
 const destinations: Record<string, Destination> = {
   paris: {
+    slug: "paris",
     name: "Paris",
     country: "France",
     description:
@@ -17,8 +18,15 @@ const destinations: Record<string, Destination> = {
     ],
     imageUrl: "/destinations/paris.jpg",
     rating: 4.8,
+    timezone: "Europe/Paris",
+    attractions: [
+      { name: "Eiffel Tower", description: "Iconic iron lattice tower and symbol of Paris", imageUrl: "/attractions/eiffel-tower.jpg" },
+      { name: "Louvre Museum", description: "World's largest art museum housing the Mona Lisa", imageUrl: "/attractions/louvre.jpg" },
+      { name: "Sacré-Cœur Basilica", description: "White-domed basilica atop Montmartre hill", imageUrl: "/attractions/sacre-coeur.jpg" },
+    ],
   },
   tokyo: {
+    slug: "tokyo",
     name: "Tokyo",
     country: "Japan",
     description:
@@ -34,8 +42,15 @@ const destinations: Record<string, Destination> = {
     ],
     imageUrl: "/destinations/tokyo.jpg",
     rating: 4.9,
+    timezone: "Asia/Tokyo",
+    attractions: [
+      { name: "Senso-ji Temple", description: "Tokyo's oldest Buddhist temple in Asakusa", imageUrl: "/attractions/sensoji.jpg" },
+      { name: "Shibuya Crossing", description: "World's busiest pedestrian crossing", imageUrl: "/attractions/shibuya.jpg" },
+      { name: "Meiji Shrine", description: "Serene Shinto shrine surrounded by forest", imageUrl: "/attractions/meiji.jpg" },
+    ],
   },
   bali: {
+    slug: "bali",
     name: "Bali",
     country: "Indonesia",
     description:
@@ -51,8 +66,15 @@ const destinations: Record<string, Destination> = {
     ],
     imageUrl: "/destinations/bali.jpg",
     rating: 4.7,
+    timezone: "Asia/Makassar",
+    attractions: [
+      { name: "Tegallalang Rice Terraces", description: "Stunning terraced rice paddies in Ubud", imageUrl: "/attractions/tegallalang.jpg" },
+      { name: "Uluwatu Temple", description: "Cliffside temple with ocean views and Kecak dance", imageUrl: "/attractions/uluwatu.jpg" },
+      { name: "Tanah Lot", description: "Iconic sea temple perched on a rocky outcrop", imageUrl: "/attractions/tanah-lot.jpg" },
+    ],
   },
   barcelona: {
+    slug: "barcelona",
     name: "Barcelona",
     country: "Spain",
     description:
@@ -68,8 +90,15 @@ const destinations: Record<string, Destination> = {
     ],
     imageUrl: "/destinations/barcelona.jpg",
     rating: 4.7,
+    timezone: "Europe/Madrid",
+    attractions: [
+      { name: "Sagrada Familia", description: "Gaudí's unfinished masterpiece basilica", imageUrl: "/attractions/sagrada-familia.jpg" },
+      { name: "Park Güell", description: "Whimsical mosaic park designed by Gaudí", imageUrl: "/attractions/park-guell.jpg" },
+      { name: "Gothic Quarter", description: "Medieval labyrinth of narrow streets and plazas", imageUrl: "/attractions/gothic-quarter.jpg" },
+    ],
   },
   "new york": {
+    slug: "new-york",
     name: "New York",
     country: "USA",
     description:
@@ -85,8 +114,15 @@ const destinations: Record<string, Destination> = {
     ],
     imageUrl: "/destinations/newyork.jpg",
     rating: 4.6,
+    timezone: "America/New_York",
+    attractions: [
+      { name: "Statue of Liberty", description: "Iconic symbol of freedom on Liberty Island", imageUrl: "/attractions/statue-liberty.jpg" },
+      { name: "Central Park", description: "843-acre urban oasis in Manhattan", imageUrl: "/attractions/central-park.jpg" },
+      { name: "Empire State Building", description: "Art Deco skyscraper with panoramic observation deck", imageUrl: "/attractions/empire-state.jpg" },
+    ],
   },
   london: {
+    slug: "london",
     name: "London",
     country: "United Kingdom",
     description:
@@ -102,8 +138,15 @@ const destinations: Record<string, Destination> = {
     ],
     imageUrl: "/destinations/london.jpg",
     rating: 4.7,
+    timezone: "Europe/London",
+    attractions: [
+      { name: "Tower of London", description: "Historic castle and home of the Crown Jewels", imageUrl: "/attractions/tower-london.jpg" },
+      { name: "British Museum", description: "World-renowned museum with free admission", imageUrl: "/attractions/british-museum.jpg" },
+      { name: "Buckingham Palace", description: "Official London residence of the monarch", imageUrl: "/attractions/buckingham.jpg" },
+    ],
   },
   rome: {
+    slug: "rome",
     name: "Rome",
     country: "Italy",
     description:
@@ -119,8 +162,15 @@ const destinations: Record<string, Destination> = {
     ],
     imageUrl: "/destinations/rome.jpg",
     rating: 4.8,
+    timezone: "Europe/Rome",
+    attractions: [
+      { name: "Colosseum", description: "Iconic ancient amphitheater of gladiatorial contests", imageUrl: "/attractions/colosseum.jpg" },
+      { name: "Vatican Museums", description: "Vast art collection including the Sistine Chapel", imageUrl: "/attractions/vatican.jpg" },
+      { name: "Trevi Fountain", description: "Baroque masterpiece where visitors toss coins for luck", imageUrl: "/attractions/trevi.jpg" },
+    ],
   },
   dubai: {
+    slug: "dubai",
     name: "Dubai",
     country: "UAE",
     description:
@@ -142,8 +192,15 @@ const destinations: Record<string, Destination> = {
     ],
     imageUrl: "/destinations/dubai.jpg",
     rating: 4.6,
+    timezone: "Asia/Dubai",
+    attractions: [
+      { name: "Burj Khalifa", description: "World's tallest building with observation decks", imageUrl: "/attractions/burj-khalifa.jpg" },
+      { name: "Palm Jumeirah", description: "Iconic palm-shaped artificial island", imageUrl: "/attractions/palm-jumeirah.jpg" },
+      { name: "Dubai Mall", description: "One of the world's largest shopping destinations", imageUrl: "/attractions/dubai-mall.jpg" },
+    ],
   },
   sydney: {
+    slug: "sydney",
     name: "Sydney",
     country: "Australia",
     description:
@@ -159,8 +216,15 @@ const destinations: Record<string, Destination> = {
     ],
     imageUrl: "/destinations/sydney.jpg",
     rating: 4.7,
+    timezone: "Australia/Sydney",
+    attractions: [
+      { name: "Sydney Opera House", description: "Architectural masterpiece on the harbour", imageUrl: "/attractions/opera-house.jpg" },
+      { name: "Harbour Bridge", description: "Iconic bridge with a famous climb experience", imageUrl: "/attractions/harbour-bridge.jpg" },
+      { name: "Bondi Beach", description: "World-famous surf beach with coastal walks", imageUrl: "/attractions/bondi.jpg" },
+    ],
   },
   "machu picchu": {
+    slug: "machu-picchu",
     name: "Machu Picchu",
     country: "Peru",
     description:
@@ -176,8 +240,15 @@ const destinations: Record<string, Destination> = {
     ],
     imageUrl: "/destinations/machupicchu.jpg",
     rating: 4.9,
+    timezone: "America/Lima",
+    attractions: [
+      { name: "Inca Trail", description: "Legendary multi-day trek to the citadel", imageUrl: "/attractions/inca-trail.jpg" },
+      { name: "Huayna Picchu", description: "Steep peak with panoramic ruins views", imageUrl: "/attractions/huayna-picchu.jpg" },
+      { name: "Temple of the Sun", description: "Sacred Inca temple with astronomical alignment", imageUrl: "/attractions/temple-sun.jpg" },
+    ],
   },
   santorini: {
+    slug: "santorini",
     name: "Santorini",
     country: "Greece",
     description:
@@ -193,8 +264,15 @@ const destinations: Record<string, Destination> = {
     ],
     imageUrl: "/destinations/santorini.jpg",
     rating: 4.8,
+    timezone: "Europe/Athens",
+    attractions: [
+      { name: "Oia Village", description: "Picturesque village famous for stunning sunsets", imageUrl: "/attractions/oia.jpg" },
+      { name: "Red Beach", description: "Dramatic volcanic beach with crimson cliffs", imageUrl: "/attractions/red-beach.jpg" },
+      { name: "Akrotiri", description: "Preserved Minoan Bronze Age settlement", imageUrl: "/attractions/akrotiri.jpg" },
+    ],
   },
   maldives: {
+    slug: "maldives",
     name: "Maldives",
     country: "Maldives",
     description:
@@ -217,6 +295,696 @@ const destinations: Record<string, Destination> = {
     ],
     imageUrl: "/destinations/maldives.jpg",
     rating: 4.9,
+    timezone: "Indian/Maldives",
+    attractions: [
+      { name: "Bioluminescent Beach", description: "Glowing plankton illuminating the shore at night", imageUrl: "/attractions/bio-beach.jpg" },
+      { name: "Banana Reef", description: "One of the Maldives' first dive sites", imageUrl: "/attractions/banana-reef.jpg" },
+      { name: "Ithaa Undersea Restaurant", description: "All-glass underwater dining experience", imageUrl: "/attractions/ithaa.jpg" },
+    ],
+  },
+  amsterdam: {
+    slug: "amsterdam",
+    name: "Amsterdam",
+    country: "Netherlands",
+    description:
+      "A charming city of canal rings, cycling culture, and world-class art museums. Amsterdam blends a rich Golden Age heritage with progressive modern energy.",
+    bestMonths: ["April", "May", "June", "September"],
+    averageTemp: { high: 17, low: 8 },
+    highlights: ["Canal Cruises", "Rijksmuseum", "Anne Frank House", "Vondelpark", "Jordaan District"],
+    imageUrl: "/destinations/amsterdam.jpg",
+    rating: 4.6,
+    timezone: "Europe/Amsterdam",
+    attractions: [
+      { name: "Rijksmuseum", description: "Dutch national museum featuring Rembrandt and Vermeer", imageUrl: "/attractions/rijksmuseum.jpg" },
+      { name: "Anne Frank House", description: "Moving WWII memorial museum in a hidden annex", imageUrl: "/attractions/anne-frank.jpg" },
+      { name: "Van Gogh Museum", description: "World's largest collection of Van Gogh's works", imageUrl: "/attractions/van-gogh.jpg" },
+    ],
+  },
+  bangkok: {
+    slug: "bangkok",
+    name: "Bangkok",
+    country: "Thailand",
+    description:
+      "A vibrant capital where ornate temples rise alongside gleaming skyscrapers. Bangkok enthralls with its legendary street food, floating markets, and exuberant nightlife.",
+    bestMonths: ["November", "December", "January", "February"],
+    averageTemp: { high: 34, low: 26 },
+    highlights: ["Grand Palace", "Wat Arun", "Chatuchak Market", "Khao San Road", "Floating Markets"],
+    imageUrl: "/destinations/bangkok.jpg",
+    rating: 4.5,
+    timezone: "Asia/Bangkok",
+    attractions: [
+      { name: "Grand Palace", description: "Dazzling former royal residence with Emerald Buddha", imageUrl: "/attractions/grand-palace.jpg" },
+      { name: "Wat Arun", description: "Temple of Dawn with striking porcelain-tiled spire", imageUrl: "/attractions/wat-arun.jpg" },
+      { name: "Chatuchak Market", description: "One of the world's largest weekend markets", imageUrl: "/attractions/chatuchak.jpg" },
+    ],
+  },
+  "cape town": {
+    slug: "cape-town",
+    name: "Cape Town",
+    country: "South Africa",
+    description:
+      "A breathtaking city nestled between Table Mountain and the Atlantic Ocean. Cape Town offers dramatic landscapes, vibrant culture, world-class wine, and incredible biodiversity.",
+    bestMonths: ["October", "November", "December", "January", "February", "March"],
+    averageTemp: { high: 25, low: 15 },
+    highlights: ["Table Mountain", "Cape of Good Hope", "Robben Island", "V&A Waterfront", "Winelands"],
+    imageUrl: "/destinations/capetown.jpg",
+    rating: 4.7,
+    timezone: "Africa/Johannesburg",
+    attractions: [
+      { name: "Table Mountain", description: "Flat-topped mountain with cable car and hiking trails", imageUrl: "/attractions/table-mountain.jpg" },
+      { name: "Cape of Good Hope", description: "Dramatic headland at the southwestern tip of Africa", imageUrl: "/attractions/cape-hope.jpg" },
+      { name: "Robben Island", description: "Historic island prison where Mandela was held", imageUrl: "/attractions/robben-island.jpg" },
+    ],
+  },
+  marrakech: {
+    slug: "marrakech",
+    name: "Marrakech",
+    country: "Morocco",
+    description:
+      "An intoxicating city of spice-scented souks, ornate palaces, and the bustling Jemaa el-Fnaa square. Marrakech immerses visitors in a sensory feast of color, sound, and flavor.",
+    bestMonths: ["March", "April", "May", "October", "November"],
+    averageTemp: { high: 28, low: 14 },
+    highlights: ["Jemaa el-Fnaa", "Majorelle Garden", "Bahia Palace", "Medina Souks", "Atlas Mountains"],
+    imageUrl: "/destinations/marrakech.jpg",
+    rating: 4.5,
+    timezone: "Africa/Casablanca",
+    attractions: [
+      { name: "Jemaa el-Fnaa", description: "Legendary square with performers, food stalls, and snake charmers", imageUrl: "/attractions/jemaa.jpg" },
+      { name: "Majorelle Garden", description: "Stunning botanical garden with cobalt blue accents", imageUrl: "/attractions/majorelle.jpg" },
+      { name: "Bahia Palace", description: "19th-century palace with intricate tilework and gardens", imageUrl: "/attractions/bahia.jpg" },
+    ],
+  },
+  prague: {
+    slug: "prague",
+    name: "Prague",
+    country: "Czech Republic",
+    description:
+      "The City of a Hundred Spires enchants with its fairy-tale Old Town, Gothic cathedrals, and lively beer culture. Prague is one of Europe's most photogenic and affordable capitals.",
+    bestMonths: ["April", "May", "June", "September", "October"],
+    averageTemp: { high: 19, low: 8 },
+    highlights: ["Charles Bridge", "Prague Castle", "Old Town Square", "Astronomical Clock", "Petřín Hill"],
+    imageUrl: "/destinations/prague.jpg",
+    rating: 4.6,
+    timezone: "Europe/Prague",
+    attractions: [
+      { name: "Prague Castle", description: "Largest ancient castle complex in the world", imageUrl: "/attractions/prague-castle.jpg" },
+      { name: "Charles Bridge", description: "Iconic 14th-century stone bridge lined with statues", imageUrl: "/attractions/charles-bridge.jpg" },
+      { name: "Astronomical Clock", description: "Medieval clock with hourly show of moving apostles", imageUrl: "/attractions/astro-clock.jpg" },
+    ],
+  },
+  istanbul: {
+    slug: "istanbul",
+    name: "Istanbul",
+    country: "Turkey",
+    description:
+      "A transcontinental metropolis straddling Europe and Asia. Istanbul dazzles with its Byzantine and Ottoman heritage, bustling bazaars, and a culinary scene that bridges two worlds.",
+    bestMonths: ["April", "May", "September", "October"],
+    averageTemp: { high: 22, low: 12 },
+    highlights: ["Hagia Sophia", "Blue Mosque", "Grand Bazaar", "Bosphorus Cruise", "Topkapi Palace"],
+    imageUrl: "/destinations/istanbul.jpg",
+    rating: 4.7,
+    timezone: "Europe/Istanbul",
+    attractions: [
+      { name: "Hagia Sophia", description: "Awe-inspiring 6th-century cathedral turned mosque", imageUrl: "/attractions/hagia-sophia.jpg" },
+      { name: "Grand Bazaar", description: "One of the world's oldest and largest covered markets", imageUrl: "/attractions/grand-bazaar.jpg" },
+      { name: "Topkapi Palace", description: "Opulent Ottoman palace with stunning Bosphorus views", imageUrl: "/attractions/topkapi.jpg" },
+    ],
+  },
+  "rio de janeiro": {
+    slug: "rio-de-janeiro",
+    name: "Rio de Janeiro",
+    country: "Brazil",
+    description:
+      "A vibrant city of samba rhythms, golden beaches, and dramatic mountain scenery. Rio pulses with carnival energy, from Copacabana's shores to Sugarloaf Mountain's summit.",
+    bestMonths: ["May", "June", "July", "August", "September"],
+    averageTemp: { high: 28, low: 22 },
+    highlights: ["Christ the Redeemer", "Copacabana Beach", "Sugarloaf Mountain", "Carnival", "Tijuca Forest"],
+    imageUrl: "/destinations/rio.jpg",
+    rating: 4.6,
+    timezone: "America/Sao_Paulo",
+    attractions: [
+      { name: "Christ the Redeemer", description: "Iconic Art Deco statue atop Corcovado mountain", imageUrl: "/attractions/christ-redeemer.jpg" },
+      { name: "Sugarloaf Mountain", description: "Cable car ride to a peak with sweeping bay views", imageUrl: "/attractions/sugarloaf.jpg" },
+      { name: "Copacabana Beach", description: "World-famous crescent beach with lively boardwalk", imageUrl: "/attractions/copacabana.jpg" },
+    ],
+  },
+  singapore: {
+    slug: "singapore",
+    name: "Singapore",
+    country: "Singapore",
+    description:
+      "A gleaming city-state where futuristic gardens meet hawker stall feasts. Singapore is a melting pot of Malay, Chinese, and Indian cultures wrapped in tropical greenery.",
+    bestMonths: ["February", "March", "April", "October", "November"],
+    averageTemp: { high: 31, low: 25 },
+    highlights: ["Gardens by the Bay", "Marina Bay Sands", "Chinatown", "Sentosa Island", "Hawker Centres"],
+    imageUrl: "/destinations/singapore.jpg",
+    rating: 4.7,
+    timezone: "Asia/Singapore",
+    attractions: [
+      { name: "Gardens by the Bay", description: "Futuristic park with towering Supertree structures", imageUrl: "/attractions/gardens-bay.jpg" },
+      { name: "Marina Bay Sands", description: "Iconic hotel with infinity pool and SkyPark", imageUrl: "/attractions/marina-bay.jpg" },
+      { name: "Hawker Centres", description: "Affordable open-air food courts with local delicacies", imageUrl: "/attractions/hawker.jpg" },
+    ],
+  },
+  "buenos aires": {
+    slug: "buenos-aires",
+    name: "Buenos Aires",
+    country: "Argentina",
+    description:
+      "The Paris of South America pulsates with tango, sizzling steakhouses, and European-inspired architecture. Buenos Aires is a cultural powerhouse brimming with passion.",
+    bestMonths: ["March", "April", "May", "October", "November"],
+    averageTemp: { high: 24, low: 14 },
+    highlights: ["La Boca", "Recoleta Cemetery", "San Telmo Market", "Tango Shows", "Puerto Madero"],
+    imageUrl: "/destinations/buenosaires.jpg",
+    rating: 4.5,
+    timezone: "America/Argentina/Buenos_Aires",
+    attractions: [
+      { name: "La Boca", description: "Colorful neighborhood famed for tango and street art", imageUrl: "/attractions/la-boca.jpg" },
+      { name: "Recoleta Cemetery", description: "Ornate cemetery with elaborate mausoleums", imageUrl: "/attractions/recoleta.jpg" },
+      { name: "Teatro Colón", description: "One of the world's finest opera houses", imageUrl: "/attractions/teatro-colon.jpg" },
+    ],
+  },
+  kyoto: {
+    slug: "kyoto",
+    name: "Kyoto",
+    country: "Japan",
+    description:
+      "Japan's cultural heart, where thousands of temples, serene bamboo groves, and exquisite kaiseki cuisine preserve centuries of tradition amid stunning natural beauty.",
+    bestMonths: ["March", "April", "May", "October", "November"],
+    averageTemp: { high: 21, low: 10 },
+    highlights: ["Fushimi Inari Shrine", "Arashiyama Bamboo Grove", "Kinkaku-ji", "Geisha District", "Tea Ceremonies"],
+    imageUrl: "/destinations/kyoto.jpg",
+    rating: 4.9,
+    timezone: "Asia/Tokyo",
+    attractions: [
+      { name: "Fushimi Inari Shrine", description: "Thousands of vermillion torii gates on a mountain trail", imageUrl: "/attractions/fushimi-inari.jpg" },
+      { name: "Kinkaku-ji", description: "Stunning golden pavilion reflected in a mirror pond", imageUrl: "/attractions/kinkakuji.jpg" },
+      { name: "Arashiyama Bamboo Grove", description: "Ethereal pathway through towering bamboo stalks", imageUrl: "/attractions/arashiyama.jpg" },
+    ],
+  },
+  lisbon: {
+    slug: "lisbon",
+    name: "Lisbon",
+    country: "Portugal",
+    description:
+      "A sun-drenched hillside capital with vintage trams, pastel-colored buildings, and legendary custard tarts. Lisbon blends old-world charm with a vibrant contemporary arts scene.",
+    bestMonths: ["April", "May", "June", "September", "October"],
+    averageTemp: { high: 23, low: 13 },
+    highlights: ["Belém Tower", "Alfama District", "Tram 28", "Jerónimos Monastery", "Pastéis de Belém"],
+    imageUrl: "/destinations/lisbon.jpg",
+    rating: 4.6,
+    timezone: "Europe/Lisbon",
+    attractions: [
+      { name: "Belém Tower", description: "16th-century fortified tower on the Tagus River", imageUrl: "/attractions/belem-tower.jpg" },
+      { name: "Alfama District", description: "Oldest neighborhood with Fado music and narrow alleys", imageUrl: "/attractions/alfama.jpg" },
+      { name: "Jerónimos Monastery", description: "Ornate Manueline-style monastery and UNESCO site", imageUrl: "/attractions/jeronimos.jpg" },
+    ],
+  },
+  vienna: {
+    slug: "vienna",
+    name: "Vienna",
+    country: "Austria",
+    description:
+      "An imperial city of grand palaces, classical music, and sublime coffee house culture. Vienna combines Habsburg elegance with cutting-edge contemporary design.",
+    bestMonths: ["April", "May", "June", "September", "October"],
+    averageTemp: { high: 20, low: 9 },
+    highlights: ["Schönbrunn Palace", "St. Stephen's Cathedral", "Belvedere Museum", "Vienna State Opera", "Naschmarkt"],
+    imageUrl: "/destinations/vienna.jpg",
+    rating: 4.7,
+    timezone: "Europe/Vienna",
+    attractions: [
+      { name: "Schönbrunn Palace", description: "Former imperial summer residence with vast gardens", imageUrl: "/attractions/schonbrunn.jpg" },
+      { name: "St. Stephen's Cathedral", description: "Gothic cathedral dominating the city's skyline", imageUrl: "/attractions/st-stephens.jpg" },
+      { name: "Belvedere Museum", description: "Baroque palace housing Klimt's The Kiss", imageUrl: "/attractions/belvedere.jpg" },
+    ],
+  },
+  "hong kong": {
+    slug: "hong-kong",
+    name: "Hong Kong",
+    country: "China",
+    description:
+      "A dazzling skyline meets ancient traditions in this dynamic metropolis. Hong Kong thrills with dim sum feasts, harbor views, hiking trails, and a relentless urban energy.",
+    bestMonths: ["October", "November", "December"],
+    averageTemp: { high: 27, low: 21 },
+    highlights: ["Victoria Peak", "Star Ferry", "Temple Street Market", "Big Buddha", "Lan Kwai Fong"],
+    imageUrl: "/destinations/hongkong.jpg",
+    rating: 4.6,
+    timezone: "Asia/Hong_Kong",
+    attractions: [
+      { name: "Victoria Peak", description: "Mountain summit with panoramic skyline views", imageUrl: "/attractions/victoria-peak.jpg" },
+      { name: "Big Buddha", description: "Massive bronze seated Buddha statue on Lantau Island", imageUrl: "/attractions/big-buddha.jpg" },
+      { name: "Star Ferry", description: "Legendary harbour crossing with stunning views", imageUrl: "/attractions/star-ferry.jpg" },
+    ],
+  },
+  cusco: {
+    slug: "cusco",
+    name: "Cusco",
+    country: "Peru",
+    description:
+      "The former capital of the Inca Empire, Cusco captivates with its blend of Inca stonework and Spanish colonial architecture set high in the Peruvian Andes.",
+    bestMonths: ["May", "June", "July", "August", "September"],
+    averageTemp: { high: 19, low: 2 },
+    highlights: ["Plaza de Armas", "Sacsayhuamán", "San Pedro Market", "Rainbow Mountain", "Sacred Valley"],
+    imageUrl: "/destinations/cusco.jpg",
+    rating: 4.7,
+    timezone: "America/Lima",
+    attractions: [
+      { name: "Sacsayhuamán", description: "Massive Inca fortress with perfectly fitted stones", imageUrl: "/attractions/sacsayhuaman.jpg" },
+      { name: "Plaza de Armas", description: "Grand central square surrounded by colonial arcades", imageUrl: "/attractions/plaza-armas.jpg" },
+      { name: "Rainbow Mountain", description: "Colorful striped mountain at 5,200m elevation", imageUrl: "/attractions/rainbow-mountain.jpg" },
+    ],
+  },
+  cairo: {
+    slug: "cairo",
+    name: "Cairo",
+    country: "Egypt",
+    description:
+      "A chaotic, captivating megalopolis where the ancient pyramids of Giza stand watch over a teeming modern city. Cairo is the gateway to pharaonic wonders and Nile cruises.",
+    bestMonths: ["October", "November", "December", "January", "February", "March"],
+    averageTemp: { high: 30, low: 16 },
+    highlights: ["Pyramids of Giza", "Egyptian Museum", "Khan el-Khalili", "Nile River Cruise", "Sphinx"],
+    imageUrl: "/destinations/cairo.jpg",
+    rating: 4.5,
+    timezone: "Africa/Cairo",
+    attractions: [
+      { name: "Pyramids of Giza", description: "Last surviving wonder of the ancient world", imageUrl: "/attractions/pyramids.jpg" },
+      { name: "Egyptian Museum", description: "Vast collection including Tutankhamun's treasures", imageUrl: "/attractions/egyptian-museum.jpg" },
+      { name: "Khan el-Khalili", description: "Historic bazaar dating back to the 14th century", imageUrl: "/attractions/khan-khalili.jpg" },
+    ],
+  },
+  reykjavik: {
+    slug: "reykjavik",
+    name: "Reykjavik",
+    country: "Iceland",
+    description:
+      "The world's northernmost capital, a gateway to glaciers, geysers, and the Northern Lights. Reykjavik pairs raw natural beauty with colorful streets and creative culture.",
+    bestMonths: ["June", "July", "August"],
+    averageTemp: { high: 13, low: 4 },
+    highlights: ["Northern Lights", "Blue Lagoon", "Golden Circle", "Hallgrímskirkja", "Whale Watching"],
+    imageUrl: "/destinations/reykjavik.jpg",
+    rating: 4.7,
+    timezone: "Atlantic/Reykjavik",
+    attractions: [
+      { name: "Blue Lagoon", description: "Geothermal spa with milky blue mineral-rich waters", imageUrl: "/attractions/blue-lagoon.jpg" },
+      { name: "Hallgrímskirkja", description: "Striking church inspired by basalt column formations", imageUrl: "/attractions/hallgrimskirkja.jpg" },
+      { name: "Golden Circle", description: "Route linking geysers, waterfalls, and tectonic plates", imageUrl: "/attractions/golden-circle.jpg" },
+    ],
+  },
+  "kuala lumpur": {
+    slug: "kuala-lumpur",
+    name: "Kuala Lumpur",
+    country: "Malaysia",
+    description:
+      "A multicultural capital where gleaming skyscrapers tower above colonial-era buildings, bustling hawker stalls, and ornate mosques. KL is Southeast Asia's most diverse city.",
+    bestMonths: ["January", "February", "June", "July", "August"],
+    averageTemp: { high: 33, low: 24 },
+    highlights: ["Petronas Towers", "Batu Caves", "Jalan Alor Food Street", "KL Tower", "Merdeka Square"],
+    imageUrl: "/destinations/kualalumpur.jpg",
+    rating: 4.4,
+    timezone: "Asia/Kuala_Lumpur",
+    attractions: [
+      { name: "Petronas Twin Towers", description: "Iconic 88-storey twin skyscrapers with skybridge", imageUrl: "/attractions/petronas.jpg" },
+      { name: "Batu Caves", description: "Limestone caves with a towering Hindu shrine", imageUrl: "/attractions/batu-caves.jpg" },
+      { name: "Jalan Alor", description: "Vibrant night food street with Southeast Asian flavors", imageUrl: "/attractions/jalan-alor.jpg" },
+    ],
+  },
+  hanoi: {
+    slug: "hanoi",
+    name: "Hanoi",
+    country: "Vietnam",
+    description:
+      "Vietnam's captivating capital where French colonial elegance meets ancient Vietnamese culture. Hanoi charms with its Old Quarter, street food, and serene lakes.",
+    bestMonths: ["October", "November", "March", "April"],
+    averageTemp: { high: 28, low: 20 },
+    highlights: ["Hoan Kiem Lake", "Old Quarter", "Ho Chi Minh Mausoleum", "Temple of Literature", "Street Food Tours"],
+    imageUrl: "/destinations/hanoi.jpg",
+    rating: 4.5,
+    timezone: "Asia/Ho_Chi_Minh",
+    attractions: [
+      { name: "Hoan Kiem Lake", description: "Scenic lake with the iconic red Huc Bridge", imageUrl: "/attractions/hoan-kiem.jpg" },
+      { name: "Temple of Literature", description: "Vietnam's first university dating to 1070", imageUrl: "/attractions/temple-literature.jpg" },
+      { name: "Old Quarter", description: "Ancient trading district with 36 bustling streets", imageUrl: "/attractions/old-quarter.jpg" },
+    ],
+  },
+  "san francisco": {
+    slug: "san-francisco",
+    name: "San Francisco",
+    country: "USA",
+    description:
+      "A hilly, fog-kissed city of iconic bridges, Victorian painted ladies, and pioneering tech culture. San Francisco enchants with its diverse neighborhoods and stunning bay views.",
+    bestMonths: ["September", "October", "April", "May"],
+    averageTemp: { high: 18, low: 11 },
+    highlights: ["Golden Gate Bridge", "Alcatraz Island", "Fisherman's Wharf", "Chinatown", "Cable Cars"],
+    imageUrl: "/destinations/sanfrancisco.jpg",
+    rating: 4.6,
+    timezone: "America/Los_Angeles",
+    attractions: [
+      { name: "Golden Gate Bridge", description: "Iconic orange suspension bridge spanning the bay", imageUrl: "/attractions/golden-gate.jpg" },
+      { name: "Alcatraz Island", description: "Notorious former federal prison on a bay island", imageUrl: "/attractions/alcatraz.jpg" },
+      { name: "Fisherman's Wharf", description: "Waterfront district with seafood and sea lions", imageUrl: "/attractions/fishermans-wharf.jpg" },
+    ],
+  },
+  athens: {
+    slug: "athens",
+    name: "Athens",
+    country: "Greece",
+    description:
+      "The cradle of Western civilization, where the Acropolis presides over a vibrant modern city. Athens offers ancient ruins, lively tavernas, and warm Mediterranean hospitality.",
+    bestMonths: ["April", "May", "June", "September", "October"],
+    averageTemp: { high: 26, low: 15 },
+    highlights: ["Acropolis", "Plaka District", "National Archaeological Museum", "Temple of Zeus", "Monastiraki Flea Market"],
+    imageUrl: "/destinations/athens.jpg",
+    rating: 4.6,
+    timezone: "Europe/Athens",
+    attractions: [
+      { name: "Acropolis", description: "Ancient citadel with the iconic Parthenon temple", imageUrl: "/attractions/acropolis.jpg" },
+      { name: "Plaka District", description: "Charming old neighborhood at the foot of the Acropolis", imageUrl: "/attractions/plaka.jpg" },
+      { name: "Temple of Olympian Zeus", description: "Ruins of a colossal temple dedicated to Zeus", imageUrl: "/attractions/temple-zeus.jpg" },
+    ],
+  },
+  "mexico city": {
+    slug: "mexico-city",
+    name: "Mexico City",
+    country: "Mexico",
+    description:
+      "A sprawling, vibrant capital built on the ruins of the Aztec empire. Mexico City astounds with world-class museums, incredible street food, and a deep cultural soul.",
+    bestMonths: ["March", "April", "May", "October", "November"],
+    averageTemp: { high: 24, low: 12 },
+    highlights: ["Zócalo", "Frida Kahlo Museum", "Teotihuacán", "Chapultepec Castle", "Coyoacán"],
+    imageUrl: "/destinations/mexicocity.jpg",
+    rating: 4.5,
+    timezone: "America/Mexico_City",
+    attractions: [
+      { name: "Teotihuacán", description: "Massive ancient pyramids of the Sun and Moon", imageUrl: "/attractions/teotihuacan.jpg" },
+      { name: "Frida Kahlo Museum", description: "Artist's iconic Blue House turned museum", imageUrl: "/attractions/frida-kahlo.jpg" },
+      { name: "Chapultepec Castle", description: "Hilltop castle with city views and history museum", imageUrl: "/attractions/chapultepec.jpg" },
+    ],
+  },
+  petra: {
+    slug: "petra",
+    name: "Petra",
+    country: "Jordan",
+    description:
+      "The Rose City carved into sandstone cliffs by the Nabataeans over 2,000 years ago. Petra is one of the New Seven Wonders of the World and a bucket-list archaeological marvel.",
+    bestMonths: ["March", "April", "May", "October", "November"],
+    averageTemp: { high: 23, low: 10 },
+    highlights: ["The Treasury", "The Siq", "Monastery", "Royal Tombs", "Petra by Night"],
+    imageUrl: "/destinations/petra.jpg",
+    rating: 4.8,
+    timezone: "Asia/Amman",
+    attractions: [
+      { name: "The Treasury (Al-Khazneh)", description: "Iconic rose-red facade carved into the cliff", imageUrl: "/attractions/treasury.jpg" },
+      { name: "The Siq", description: "Dramatic narrow gorge entrance to the ancient city", imageUrl: "/attractions/siq.jpg" },
+      { name: "The Monastery (Ad-Deir)", description: "Massive carved facade reached by 800 steps", imageUrl: "/attractions/monastery.jpg" },
+    ],
+  },
+  dublin: {
+    slug: "dublin",
+    name: "Dublin",
+    country: "Ireland",
+    description:
+      "A literary city of Georgian architecture, lively pubs, and warm-hearted locals. Dublin brims with history from Viking origins to its role in modern Irish independence.",
+    bestMonths: ["May", "June", "July", "August", "September"],
+    averageTemp: { high: 16, low: 8 },
+    highlights: ["Temple Bar", "Trinity College", "Guinness Storehouse", "St. Patrick's Cathedral", "Phoenix Park"],
+    imageUrl: "/destinations/dublin.jpg",
+    rating: 4.5,
+    timezone: "Europe/Dublin",
+    attractions: [
+      { name: "Trinity College & Book of Kells", description: "Historic university housing a medieval illuminated manuscript", imageUrl: "/attractions/trinity.jpg" },
+      { name: "Guinness Storehouse", description: "Seven-storey brewery experience with rooftop bar", imageUrl: "/attractions/guinness.jpg" },
+      { name: "Temple Bar", description: "Lively cultural quarter with pubs and street performers", imageUrl: "/attractions/temple-bar.jpg" },
+    ],
+  },
+  seoul: {
+    slug: "seoul",
+    name: "Seoul",
+    country: "South Korea",
+    description:
+      "A high-tech megacity where ancient palaces neighbor K-pop studios and sizzling barbecue joints. Seoul seamlessly merges 600 years of Joseon history with cutting-edge innovation.",
+    bestMonths: ["April", "May", "September", "October"],
+    averageTemp: { high: 21, low: 10 },
+    highlights: ["Gyeongbokgung Palace", "Bukchon Hanok Village", "Myeongdong", "N Seoul Tower", "Hongdae"],
+    imageUrl: "/destinations/seoul.jpg",
+    rating: 4.6,
+    timezone: "Asia/Seoul",
+    attractions: [
+      { name: "Gyeongbokgung Palace", description: "Grandest of the five Joseon dynasty palaces", imageUrl: "/attractions/gyeongbokgung.jpg" },
+      { name: "Bukchon Hanok Village", description: "Traditional Korean houses nestled between palaces", imageUrl: "/attractions/bukchon.jpg" },
+      { name: "N Seoul Tower", description: "Landmark communication tower with city panoramas", imageUrl: "/attractions/n-seoul-tower.jpg" },
+    ],
+  },
+  "siem reap": {
+    slug: "siem-reap",
+    name: "Siem Reap",
+    country: "Cambodia",
+    description:
+      "Gateway to the magnificent Angkor temple complex. Siem Reap combines awe-inspiring ancient ruins with a buzzing night market scene and warm Khmer hospitality.",
+    bestMonths: ["November", "December", "January", "February", "March"],
+    averageTemp: { high: 33, low: 24 },
+    highlights: ["Angkor Wat", "Angkor Thom", "Ta Prohm", "Floating Villages", "Pub Street"],
+    imageUrl: "/destinations/siemreap.jpg",
+    rating: 4.7,
+    timezone: "Asia/Phnom_Penh",
+    attractions: [
+      { name: "Angkor Wat", description: "World's largest religious monument and sunrise icon", imageUrl: "/attractions/angkor-wat.jpg" },
+      { name: "Ta Prohm", description: "Jungle-enveloped temple famously used in Tomb Raider", imageUrl: "/attractions/ta-prohm.jpg" },
+      { name: "Angkor Thom", description: "Walled city with the enigmatic Bayon temple faces", imageUrl: "/attractions/angkor-thom.jpg" },
+    ],
+  },
+  florence: {
+    slug: "florence",
+    name: "Florence",
+    country: "Italy",
+    description:
+      "The birthplace of the Renaissance, Florence overflows with masterpieces by Michelangelo, Botticelli, and Brunelleschi. Tuscan cuisine and rolling hills complete the magic.",
+    bestMonths: ["April", "May", "June", "September", "October"],
+    averageTemp: { high: 24, low: 11 },
+    highlights: ["Uffizi Gallery", "Duomo", "Ponte Vecchio", "Piazzale Michelangelo", "Tuscan Food Tours"],
+    imageUrl: "/destinations/florence.jpg",
+    rating: 4.8,
+    timezone: "Europe/Rome",
+    attractions: [
+      { name: "Uffizi Gallery", description: "Premier art museum with Botticelli's Birth of Venus", imageUrl: "/attractions/uffizi.jpg" },
+      { name: "Florence Cathedral (Duomo)", description: "Iconic red-tiled dome by Brunelleschi", imageUrl: "/attractions/duomo-florence.jpg" },
+      { name: "Ponte Vecchio", description: "Medieval stone bridge lined with jewellery shops", imageUrl: "/attractions/ponte-vecchio.jpg" },
+    ],
+  },
+  jaipur: {
+    slug: "jaipur",
+    name: "Jaipur",
+    country: "India",
+    description:
+      "The Pink City, a regal Rajasthani capital of ornate palaces, majestic forts, and vibrant bazaars. Jaipur dazzles with its rich heritage, textiles, and spice-laden cuisine.",
+    bestMonths: ["October", "November", "December", "January", "February", "March"],
+    averageTemp: { high: 32, low: 18 },
+    highlights: ["Amber Fort", "Hawa Mahal", "City Palace", "Jantar Mantar", "Bazaars"],
+    imageUrl: "/destinations/jaipur.jpg",
+    rating: 4.5,
+    timezone: "Asia/Kolkata",
+    attractions: [
+      { name: "Amber Fort", description: "Hilltop fortress with mirror-inlaid chambers", imageUrl: "/attractions/amber-fort.jpg" },
+      { name: "Hawa Mahal", description: "Palace of Winds with its honeycomb facade", imageUrl: "/attractions/hawa-mahal.jpg" },
+      { name: "City Palace", description: "Royal residence blending Mughal and Rajput architecture", imageUrl: "/attractions/city-palace.jpg" },
+    ],
+  },
+  "vancouver": {
+    slug: "vancouver",
+    name: "Vancouver",
+    country: "Canada",
+    description:
+      "A coastal gem where snow-capped mountains meet the Pacific Ocean. Vancouver offers world-class skiing, stunning parks, a thriving food scene, and multicultural neighborhoods.",
+    bestMonths: ["June", "July", "August", "September"],
+    averageTemp: { high: 19, low: 10 },
+    highlights: ["Stanley Park", "Granville Island", "Capilano Bridge", "Grouse Mountain", "Gastown"],
+    imageUrl: "/destinations/vancouver.jpg",
+    rating: 4.6,
+    timezone: "America/Vancouver",
+    attractions: [
+      { name: "Stanley Park", description: "1,000-acre urban park with seawall and totem poles", imageUrl: "/attractions/stanley-park.jpg" },
+      { name: "Capilano Suspension Bridge", description: "Swaying bridge 70m above a rainforest canyon", imageUrl: "/attractions/capilano.jpg" },
+      { name: "Granville Island", description: "Vibrant peninsula with a public market and artisan shops", imageUrl: "/attractions/granville.jpg" },
+    ],
+  },
+  zanzibar: {
+    slug: "zanzibar",
+    name: "Zanzibar",
+    country: "Tanzania",
+    description:
+      "A tropical archipelago off East Africa known for spice plantations, turquoise waters, and the UNESCO-listed Stone Town. Zanzibar blends Swahili, Arab, and European influences.",
+    bestMonths: ["June", "July", "August", "September", "January", "February"],
+    averageTemp: { high: 31, low: 24 },
+    highlights: ["Stone Town", "Nungwi Beach", "Spice Tours", "Prison Island", "Jozani Forest"],
+    imageUrl: "/destinations/zanzibar.jpg",
+    rating: 4.5,
+    timezone: "Africa/Dar_es_Salaam",
+    attractions: [
+      { name: "Stone Town", description: "UNESCO labyrinth of narrow alleys and carved doors", imageUrl: "/attractions/stone-town.jpg" },
+      { name: "Nungwi Beach", description: "Pristine white-sand beach on the northern tip", imageUrl: "/attractions/nungwi.jpg" },
+      { name: "Jozani Forest", description: "Home to the rare red colobus monkey", imageUrl: "/attractions/jozani.jpg" },
+    ],
+  },
+  edinburgh: {
+    slug: "edinburgh",
+    name: "Edinburgh",
+    country: "United Kingdom",
+    description:
+      "Scotland's dramatic capital of medieval castles, Georgian elegance, and a world-famous arts festival. Edinburgh's cobblestone streets inspired Harry Potter's magical world.",
+    bestMonths: ["May", "June", "July", "August", "September"],
+    averageTemp: { high: 15, low: 7 },
+    highlights: ["Edinburgh Castle", "Royal Mile", "Arthur's Seat", "Fringe Festival", "Holyrood Palace"],
+    imageUrl: "/destinations/edinburgh.jpg",
+    rating: 4.6,
+    timezone: "Europe/London",
+    attractions: [
+      { name: "Edinburgh Castle", description: "Historic fortress dominating the city from Castle Rock", imageUrl: "/attractions/edinburgh-castle.jpg" },
+      { name: "Arthur's Seat", description: "Ancient volcano offering panoramic city views", imageUrl: "/attractions/arthurs-seat.jpg" },
+      { name: "Royal Mile", description: "Historic thoroughfare connecting Castle to Holyrood", imageUrl: "/attractions/royal-mile.jpg" },
+    ],
+  },
+  cartagena: {
+    slug: "cartagena",
+    name: "Cartagena",
+    country: "Colombia",
+    description:
+      "A Caribbean jewel of colorful colonial architecture, cobblestone streets, and vibrant plazas. Cartagena's walled Old Town is a living museum of Spanish colonial heritage.",
+    bestMonths: ["December", "January", "February", "March", "April"],
+    averageTemp: { high: 32, low: 25 },
+    highlights: ["Walled City", "Castillo San Felipe", "Rosario Islands", "Getsemaní", "Street Food"],
+    imageUrl: "/destinations/cartagena.jpg",
+    rating: 4.5,
+    timezone: "America/Bogota",
+    attractions: [
+      { name: "Walled City", description: "UNESCO-listed colonial center with colorful facades", imageUrl: "/attractions/walled-city.jpg" },
+      { name: "Castillo San Felipe", description: "Massive Spanish fortress with underground tunnels", imageUrl: "/attractions/san-felipe.jpg" },
+      { name: "Rosario Islands", description: "Archipelago of coral islands with turquoise waters", imageUrl: "/attractions/rosario.jpg" },
+    ],
+  },
+  "chiang mai": {
+    slug: "chiang-mai",
+    name: "Chiang Mai",
+    country: "Thailand",
+    description:
+      "The Rose of the North, a laid-back city surrounded by misty mountains and hundreds of Buddhist temples. Chiang Mai is a haven for foodies, digital nomads, and adventurers.",
+    bestMonths: ["November", "December", "January", "February"],
+    averageTemp: { high: 32, low: 20 },
+    highlights: ["Doi Suthep Temple", "Night Bazaar", "Elephant Sanctuaries", "Old City Temples", "Cooking Classes"],
+    imageUrl: "/destinations/chiangmai.jpg",
+    rating: 4.6,
+    timezone: "Asia/Bangkok",
+    attractions: [
+      { name: "Doi Suthep", description: "Sacred hilltop temple with sweeping city views", imageUrl: "/attractions/doi-suthep.jpg" },
+      { name: "Night Bazaar", description: "Sprawling evening market with crafts and street food", imageUrl: "/attractions/night-bazaar.jpg" },
+      { name: "Elephant Nature Park", description: "Ethical elephant rescue and rehabilitation center", imageUrl: "/attractions/elephant-park.jpg" },
+    ],
+  },
+  berlin: {
+    slug: "berlin",
+    name: "Berlin",
+    country: "Germany",
+    description:
+      "A creative, edgy capital defined by its turbulent history and thriving arts scene. Berlin captivates with world-class museums, legendary nightlife, and vibrant street art.",
+    bestMonths: ["May", "June", "July", "August", "September"],
+    averageTemp: { high: 20, low: 9 },
+    highlights: ["Brandenburg Gate", "Berlin Wall Memorial", "Museum Island", "Reichstag", "East Side Gallery"],
+    imageUrl: "/destinations/berlin.jpg",
+    rating: 4.5,
+    timezone: "Europe/Berlin",
+    attractions: [
+      { name: "Brandenburg Gate", description: "Iconic 18th-century neoclassical monument", imageUrl: "/attractions/brandenburg.jpg" },
+      { name: "Museum Island", description: "UNESCO island complex of five world-class museums", imageUrl: "/attractions/museum-island.jpg" },
+      { name: "East Side Gallery", description: "Longest surviving section of the Berlin Wall with murals", imageUrl: "/attractions/east-side.jpg" },
+    ],
+  },
+  "new zealand": {
+    slug: "queenstown",
+    name: "Queenstown",
+    country: "New Zealand",
+    description:
+      "The adventure capital of the world, set on the shores of crystal-clear Lake Wakatipu surrounded by the Remarkables mountain range. A paradise for thrill-seekers and nature lovers.",
+    bestMonths: ["December", "January", "February", "March"],
+    averageTemp: { high: 22, low: 8 },
+    highlights: ["Bungee Jumping", "Milford Sound", "Remarkables Ski Area", "Lake Wakatipu", "Skyline Gondola"],
+    imageUrl: "/destinations/queenstown.jpg",
+    rating: 4.8,
+    timezone: "Pacific/Auckland",
+    attractions: [
+      { name: "Milford Sound", description: "Majestic fjord with cascading waterfalls and dolphins", imageUrl: "/attractions/milford-sound.jpg" },
+      { name: "AJ Hackett Bungy", description: "World's first commercial bungee jumping site", imageUrl: "/attractions/bungy.jpg" },
+      { name: "Skyline Gondola", description: "Scenic cable car with luge rides and stargazing", imageUrl: "/attractions/skyline.jpg" },
+    ],
+  },
+  havana: {
+    slug: "havana",
+    name: "Havana",
+    country: "Cuba",
+    description:
+      "A time-capsule city of pastel Art Deco buildings, vintage American cars, and irresistible salsa rhythms. Havana pulses with revolutionary history and Caribbean soul.",
+    bestMonths: ["November", "December", "January", "February", "March", "April"],
+    averageTemp: { high: 30, low: 22 },
+    highlights: ["Old Havana", "Malecón", "Revolution Square", "Vintage Cars", "Tropicana"],
+    imageUrl: "/destinations/havana.jpg",
+    rating: 4.4,
+    timezone: "America/Havana",
+    attractions: [
+      { name: "Old Havana (Habana Vieja)", description: "UNESCO World Heritage colonial district", imageUrl: "/attractions/old-havana.jpg" },
+      { name: "Malecón", description: "Iconic seaside promenade stretching 8 km along the coast", imageUrl: "/attractions/malecon.jpg" },
+      { name: "El Capitolio", description: "Grand neoclassical building resembling the US Capitol", imageUrl: "/attractions/capitolio.jpg" },
+    ],
+  },
+  dubrovnik: {
+    slug: "dubrovnik",
+    name: "Dubrovnik",
+    country: "Croatia",
+    description:
+      "The Pearl of the Adriatic, a walled medieval city of terracotta rooftops and sparkling blue sea. Dubrovnik gained new fame as a Game of Thrones filming location.",
+    bestMonths: ["May", "June", "September", "October"],
+    averageTemp: { high: 25, low: 15 },
+    highlights: ["City Walls Walk", "Old Town", "Lokrum Island", "Cable Car", "Game of Thrones Tour"],
+    imageUrl: "/destinations/dubrovnik.jpg",
+    rating: 4.7,
+    timezone: "Europe/Zagreb",
+    attractions: [
+      { name: "City Walls", description: "1,940m of medieval fortifications with sea views", imageUrl: "/attractions/city-walls.jpg" },
+      { name: "Stradun", description: "Limestone-paved main street through the Old Town", imageUrl: "/attractions/stradun.jpg" },
+      { name: "Lokrum Island", description: "Forested island with a botanical garden and peacocks", imageUrl: "/attractions/lokrum.jpg" },
+    ],
+  },
+  "lake como": {
+    slug: "lake-como",
+    name: "Lake Como",
+    country: "Italy",
+    description:
+      "A jewel of the Italian Lakes, framed by snow-dusted Alps and dotted with pastel villas and lush gardens. Lake Como has enchanted artists and aristocrats for centuries.",
+    bestMonths: ["May", "June", "July", "August", "September"],
+    averageTemp: { high: 26, low: 14 },
+    highlights: ["Villa del Balbianello", "Bellagio", "Como Cathedral", "Ferry Rides", "Lakeside Dining"],
+    imageUrl: "/destinations/lakecomo.jpg",
+    rating: 4.7,
+    timezone: "Europe/Rome",
+    attractions: [
+      { name: "Villa del Balbianello", description: "Elegant lakeside villa featured in Star Wars and Bond", imageUrl: "/attractions/balbianello.jpg" },
+      { name: "Bellagio", description: "Picturesque village known as the Pearl of the Lake", imageUrl: "/attractions/bellagio.jpg" },
+      { name: "Como Cathedral", description: "Gothic-Renaissance cathedral near the lake shore", imageUrl: "/attractions/como-cathedral.jpg" },
+    ],
+  },
+  kathmandu: {
+    slug: "kathmandu",
+    name: "Kathmandu",
+    country: "Nepal",
+    description:
+      "A chaotic, colorful gateway to the Himalayas. Kathmandu's ancient temple squares, prayer flags, and mountain panoramas create an unforgettable spiritual and adventure hub.",
+    bestMonths: ["March", "April", "May", "October", "November"],
+    averageTemp: { high: 24, low: 10 },
+    highlights: ["Swayambhunath", "Durbar Square", "Boudhanath", "Thamel", "Everest Flights"],
+    imageUrl: "/destinations/kathmandu.jpg",
+    rating: 4.4,
+    timezone: "Asia/Kathmandu",
+    attractions: [
+      { name: "Swayambhunath (Monkey Temple)", description: "Ancient hilltop stupa with panoramic valley views", imageUrl: "/attractions/swayambhunath.jpg" },
+      { name: "Boudhanath Stupa", description: "One of the largest spherical stupas in the world", imageUrl: "/attractions/boudhanath.jpg" },
+      { name: "Pashupatinath Temple", description: "Sacred Hindu temple on the Bagmati River", imageUrl: "/attractions/pashupatinath.jpg" },
+    ],
   },
 };
 
@@ -256,7 +1024,7 @@ export function searchDestination(query: string): Destination | null {
   if (destinations[key]) return destinations[key];
   // Partial match
   for (const [k, v] of Object.entries(destinations)) {
-    if (k.includes(key) || v.country.toLowerCase().includes(key)) {
+    if (k.includes(key) || v.name.toLowerCase().includes(key) || v.country.toLowerCase().includes(key)) {
       return v;
     }
   }
@@ -302,23 +1070,52 @@ export function getWeatherDescription(
   return seasonDescriptions[season] || seasonDescriptions["shoulder"];
 }
 
-export function generateFlights(destination: Destination): FlightOption[] {
-  const basePrice: Record<string, number> = {
-    France: 450,
-    Japan: 850,
-    Indonesia: 950,
-    Spain: 500,
-    USA: 180,
-    "United Kingdom": 550,
-    Italy: 520,
-    UAE: 750,
-    Australia: 1200,
-    Peru: 600,
-    Greece: 620,
-    Maldives: 1100,
-  };
+const countryBasePrices: Record<string, number> = {
+  France: 450,
+  Japan: 850,
+  Indonesia: 950,
+  Spain: 500,
+  USA: 180,
+  "United Kingdom": 550,
+  Italy: 520,
+  UAE: 750,
+  Australia: 1200,
+  Peru: 600,
+  Greece: 620,
+  Maldives: 1100,
+  Netherlands: 480,
+  Thailand: 900,
+  "South Africa": 1050,
+  Morocco: 550,
+  "Czech Republic": 470,
+  Turkey: 580,
+  Brazil: 700,
+  Singapore: 950,
+  Argentina: 800,
+  Portugal: 460,
+  Austria: 490,
+  China: 900,
+  Egypt: 650,
+  Iceland: 550,
+  Malaysia: 920,
+  Vietnam: 880,
+  Mexico: 350,
+  Jordan: 700,
+  Ireland: 500,
+  "South Korea": 870,
+  Cambodia: 950,
+  Germany: 460,
+  "New Zealand": 1300,
+  Cuba: 400,
+  Croatia: 540,
+  Nepal: 950,
+  Colombia: 450,
+  Tanzania: 1000,
+  Canada: 250,
+};
 
-  const price = basePrice[destination.country] || 600;
+export function generateFlights(destination: Destination): FlightOption[] {
+  const price = countryBasePrices[destination.country] || 600;
   const numFlights = 4 + Math.floor(Math.random() * 3);
   const flights: FlightOption[] = [];
 
