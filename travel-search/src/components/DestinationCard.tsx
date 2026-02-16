@@ -173,12 +173,15 @@ export default function DestinationCard({ result }: DestinationCardProps) {
           </h3>
           <div className="flex flex-wrap gap-2">
             {destination.highlights.map((h) => (
-              <span
+              <a
                 key={h}
-                className="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-full text-sm font-medium hover:bg-slate-200 transition-colors"
+                href={`https://www.google.com/search?q=${encodeURIComponent(h + " " + destination.name)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-full text-sm font-medium hover:bg-indigo-100 hover:text-indigo-700 transition-colors cursor-pointer"
               >
                 {h}
-              </span>
+              </a>
             ))}
           </div>
         </div>
