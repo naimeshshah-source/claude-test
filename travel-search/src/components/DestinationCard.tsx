@@ -46,6 +46,18 @@ function StarRating({ rating }: { rating: number }) {
   );
 }
 
+function LocalTime({ timezone }: { timezone: string }) {
+  const now = new Date();
+  const formatter = new Intl.DateTimeFormat("en-US", {
+    timeZone: timezone,
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+    weekday: "short",
+  });
+  return <>{formatter.format(now)}</>;
+}
+
 export default function DestinationCard({ result }: DestinationCardProps) {
   const { destination, bestTimeToVisit, currentSeason, weatherNow } = result;
 
@@ -72,7 +84,7 @@ export default function DestinationCard({ result }: DestinationCardProps) {
         </p>
 
         {/* Info Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
           {/* Best Time */}
           <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-5 border border-emerald-100">
             <div className="flex items-center gap-2 mb-2">
@@ -115,6 +127,29 @@ export default function DestinationCard({ result }: DestinationCardProps) {
               <h3 className="font-semibold text-sky-800">Current Weather</h3>
             </div>
             <p className="text-sky-700">{weatherNow}</p>
+          </div>
+
+          {/* Local Time */}
+          <div className="bg-gradient-to-br from-violet-50 to-purple-50 rounded-2xl p-5 border border-violet-100">
+            <div className="flex items-center gap-2 mb-2">
+              <svg
+                className="w-5 h-5 text-violet-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <h3 className="font-semibold text-violet-800">Local Time</h3>
+            </div>
+            <p className="text-violet-700">
+              <LocalTime timezone={destination.timezone} />
+            </p>
           </div>
         </div>
 
