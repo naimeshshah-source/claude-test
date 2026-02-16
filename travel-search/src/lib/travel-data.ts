@@ -19,6 +19,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/paris.jpg",
     rating: 4.8,
     timezone: "Europe/Paris",
+    favoriteFood: { name: "Croissant", description: "Flaky, buttery pastry that's a staple of every Parisian breakfast" },
     attractions: [
       { name: "Eiffel Tower", description: "Iconic iron lattice tower and symbol of Paris", imageUrl: "/attractions/eiffel-tower.jpg" },
       { name: "Louvre Museum", description: "World's largest art museum housing the Mona Lisa", imageUrl: "/attractions/louvre.jpg" },
@@ -43,6 +44,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/tokyo.jpg",
     rating: 4.9,
     timezone: "Asia/Tokyo",
+    favoriteFood: { name: "Ramen", description: "Rich, savory noodle soup with pork broth, chashu, and a soft-boiled egg" },
     attractions: [
       { name: "Senso-ji Temple", description: "Tokyo's oldest Buddhist temple in Asakusa", imageUrl: "/attractions/sensoji.jpg" },
       { name: "Shibuya Crossing", description: "World's busiest pedestrian crossing", imageUrl: "/attractions/shibuya.jpg" },
@@ -67,6 +69,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/bali.jpg",
     rating: 4.7,
     timezone: "Asia/Makassar",
+    favoriteFood: { name: "Nasi Goreng", description: "Fragrant Indonesian fried rice with sweet soy sauce, shrimp paste, and a fried egg" },
     attractions: [
       { name: "Tegallalang Rice Terraces", description: "Stunning terraced rice paddies in Ubud", imageUrl: "/attractions/tegallalang.jpg" },
       { name: "Uluwatu Temple", description: "Cliffside temple with ocean views and Kecak dance", imageUrl: "/attractions/uluwatu.jpg" },
@@ -91,6 +94,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/barcelona.jpg",
     rating: 4.7,
     timezone: "Europe/Madrid",
+    favoriteFood: { name: "Patatas Bravas", description: "Crispy fried potatoes drizzled with spicy tomato sauce and aioli" },
     attractions: [
       { name: "Sagrada Familia", description: "Gaudí's unfinished masterpiece basilica", imageUrl: "/attractions/sagrada-familia.jpg" },
       { name: "Park Güell", description: "Whimsical mosaic park designed by Gaudí", imageUrl: "/attractions/park-guell.jpg" },
@@ -115,6 +119,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/newyork.jpg",
     rating: 4.6,
     timezone: "America/New_York",
+    favoriteFood: { name: "New York Pizza", description: "Thin-crust, foldable pizza slice with tangy tomato sauce and melted mozzarella" },
     attractions: [
       { name: "Statue of Liberty", description: "Iconic symbol of freedom on Liberty Island", imageUrl: "/attractions/statue-liberty.jpg" },
       { name: "Central Park", description: "843-acre urban oasis in Manhattan", imageUrl: "/attractions/central-park.jpg" },
@@ -139,6 +144,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/london.jpg",
     rating: 4.7,
     timezone: "Europe/London",
+    favoriteFood: { name: "Fish and Chips", description: "Golden battered cod with thick-cut chips, served with mushy peas and malt vinegar" },
     attractions: [
       { name: "Tower of London", description: "Historic castle and home of the Crown Jewels", imageUrl: "/attractions/tower-london.jpg" },
       { name: "British Museum", description: "World-renowned museum with free admission", imageUrl: "/attractions/british-museum.jpg" },
@@ -163,6 +169,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/rome.jpg",
     rating: 4.8,
     timezone: "Europe/Rome",
+    favoriteFood: { name: "Cacio e Pepe", description: "Classic Roman pasta with pecorino cheese and black pepper in a creamy sauce" },
     attractions: [
       { name: "Colosseum", description: "Iconic ancient amphitheater of gladiatorial contests", imageUrl: "/attractions/colosseum.jpg" },
       { name: "Vatican Museums", description: "Vast art collection including the Sistine Chapel", imageUrl: "/attractions/vatican.jpg" },
@@ -193,6 +200,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/dubai.jpg",
     rating: 4.6,
     timezone: "Asia/Dubai",
+    favoriteFood: { name: "Shawarma", description: "Juicy spiced meat wrapped in warm flatbread with garlic sauce and pickles" },
     attractions: [
       { name: "Burj Khalifa", description: "World's tallest building with observation decks", imageUrl: "/attractions/burj-khalifa.jpg" },
       { name: "Palm Jumeirah", description: "Iconic palm-shaped artificial island", imageUrl: "/attractions/palm-jumeirah.jpg" },
@@ -217,6 +225,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/sydney.jpg",
     rating: 4.7,
     timezone: "Australia/Sydney",
+    favoriteFood: { name: "Meat Pie", description: "Flaky pastry filled with seasoned minced beef and rich gravy" },
     attractions: [
       { name: "Sydney Opera House", description: "Architectural masterpiece on the harbour", imageUrl: "/attractions/opera-house.jpg" },
       { name: "Harbour Bridge", description: "Iconic bridge with a famous climb experience", imageUrl: "/attractions/harbour-bridge.jpg" },
@@ -241,6 +250,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/machupicchu.jpg",
     rating: 4.9,
     timezone: "America/Lima",
+    favoriteFood: { name: "Lomo Saltado", description: "Peruvian stir-fry of beef, tomatoes, and onions served over rice and fries" },
     attractions: [
       { name: "Inca Trail", description: "Legendary multi-day trek to the citadel", imageUrl: "/attractions/inca-trail.jpg" },
       { name: "Huayna Picchu", description: "Steep peak with panoramic ruins views", imageUrl: "/attractions/huayna-picchu.jpg" },
@@ -265,6 +275,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/santorini.jpg",
     rating: 4.8,
     timezone: "Europe/Athens",
+    favoriteFood: { name: "Gyros", description: "Warm pita stuffed with seasoned meat, tzatziki, tomatoes, and onions" },
     attractions: [
       { name: "Oia Village", description: "Picturesque village famous for stunning sunsets", imageUrl: "/attractions/oia.jpg" },
       { name: "Red Beach", description: "Dramatic volcanic beach with crimson cliffs", imageUrl: "/attractions/red-beach.jpg" },
@@ -296,6 +307,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/maldives.jpg",
     rating: 4.9,
     timezone: "Indian/Maldives",
+    favoriteFood: { name: "Mas Huni", description: "Traditional Maldivian breakfast of shredded smoked tuna, coconut, and onion with flatbread" },
     attractions: [
       { name: "Bioluminescent Beach", description: "Glowing plankton illuminating the shore at night", imageUrl: "/attractions/bio-beach.jpg" },
       { name: "Banana Reef", description: "One of the Maldives' first dive sites", imageUrl: "/attractions/banana-reef.jpg" },
@@ -314,6 +326,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/amsterdam.jpg",
     rating: 4.6,
     timezone: "Europe/Amsterdam",
+    favoriteFood: { name: "Stroopwafel", description: "Thin, warm waffle cookie filled with caramel syrup, best enjoyed fresh from a street vendor" },
     attractions: [
       { name: "Rijksmuseum", description: "Dutch national museum featuring Rembrandt and Vermeer", imageUrl: "/attractions/rijksmuseum.jpg" },
       { name: "Anne Frank House", description: "Moving WWII memorial museum in a hidden annex", imageUrl: "/attractions/anne-frank.jpg" },
@@ -332,6 +345,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/bangkok.jpg",
     rating: 4.5,
     timezone: "Asia/Bangkok",
+    favoriteFood: { name: "Pad Thai", description: "Stir-fried rice noodles with shrimp, tofu, peanuts, bean sprouts, and tamarind sauce" },
     attractions: [
       { name: "Grand Palace", description: "Dazzling former royal residence with Emerald Buddha", imageUrl: "/attractions/grand-palace.jpg" },
       { name: "Wat Arun", description: "Temple of Dawn with striking porcelain-tiled spire", imageUrl: "/attractions/wat-arun.jpg" },
@@ -350,6 +364,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/capetown.jpg",
     rating: 4.7,
     timezone: "Africa/Johannesburg",
+    favoriteFood: { name: "Bobotie", description: "Cape Malay spiced minced meat bake topped with a savory egg custard" },
     attractions: [
       { name: "Table Mountain", description: "Flat-topped mountain with cable car and hiking trails", imageUrl: "/attractions/table-mountain.jpg" },
       { name: "Cape of Good Hope", description: "Dramatic headland at the southwestern tip of Africa", imageUrl: "/attractions/cape-hope.jpg" },
@@ -368,6 +383,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/marrakech.jpg",
     rating: 4.5,
     timezone: "Africa/Casablanca",
+    favoriteFood: { name: "Tagine", description: "Slow-cooked stew of tender meat, preserved lemons, and olives in an earthenware pot" },
     attractions: [
       { name: "Jemaa el-Fnaa", description: "Legendary square with performers, food stalls, and snake charmers", imageUrl: "/attractions/jemaa.jpg" },
       { name: "Majorelle Garden", description: "Stunning botanical garden with cobalt blue accents", imageUrl: "/attractions/majorelle.jpg" },
@@ -386,6 +402,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/prague.jpg",
     rating: 4.6,
     timezone: "Europe/Prague",
+    favoriteFood: { name: "Trdelník", description: "Warm, sugar-coated rolled pastry grilled over charcoal, often filled with ice cream" },
     attractions: [
       { name: "Prague Castle", description: "Largest ancient castle complex in the world", imageUrl: "/attractions/prague-castle.jpg" },
       { name: "Charles Bridge", description: "Iconic 14th-century stone bridge lined with statues", imageUrl: "/attractions/charles-bridge.jpg" },
@@ -404,6 +421,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/istanbul.jpg",
     rating: 4.7,
     timezone: "Europe/Istanbul",
+    favoriteFood: { name: "Kebab", description: "Succulent grilled meat served with warm flatbread, fresh salad, and tangy sumac onions" },
     attractions: [
       { name: "Hagia Sophia", description: "Awe-inspiring 6th-century cathedral turned mosque", imageUrl: "/attractions/hagia-sophia.jpg" },
       { name: "Grand Bazaar", description: "One of the world's oldest and largest covered markets", imageUrl: "/attractions/grand-bazaar.jpg" },
@@ -422,6 +440,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/rio.jpg",
     rating: 4.6,
     timezone: "America/Sao_Paulo",
+    favoriteFood: { name: "Feijoada", description: "Hearty black bean stew with pork, served with rice, collard greens, and orange slices" },
     attractions: [
       { name: "Christ the Redeemer", description: "Iconic Art Deco statue atop Corcovado mountain", imageUrl: "/attractions/christ-redeemer.jpg" },
       { name: "Sugarloaf Mountain", description: "Cable car ride to a peak with sweeping bay views", imageUrl: "/attractions/sugarloaf.jpg" },
@@ -440,6 +459,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/singapore.jpg",
     rating: 4.7,
     timezone: "Asia/Singapore",
+    favoriteFood: { name: "Hainanese Chicken Rice", description: "Tender poached chicken over fragrant rice with chili and ginger sauces" },
     attractions: [
       { name: "Gardens by the Bay", description: "Futuristic park with towering Supertree structures", imageUrl: "/attractions/gardens-bay.jpg" },
       { name: "Marina Bay Sands", description: "Iconic hotel with infinity pool and SkyPark", imageUrl: "/attractions/marina-bay.jpg" },
@@ -458,6 +478,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/buenosaires.jpg",
     rating: 4.5,
     timezone: "America/Argentina/Buenos_Aires",
+    favoriteFood: { name: "Asado", description: "Traditional Argentine barbecue of slow-grilled beef ribs and chorizo with chimichurri" },
     attractions: [
       { name: "La Boca", description: "Colorful neighborhood famed for tango and street art", imageUrl: "/attractions/la-boca.jpg" },
       { name: "Recoleta Cemetery", description: "Ornate cemetery with elaborate mausoleums", imageUrl: "/attractions/recoleta.jpg" },
@@ -476,6 +497,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/kyoto.jpg",
     rating: 4.9,
     timezone: "Asia/Tokyo",
+    favoriteFood: { name: "Kaiseki", description: "Exquisite multi-course meal showcasing seasonal ingredients with artful presentation" },
     attractions: [
       { name: "Fushimi Inari Shrine", description: "Thousands of vermillion torii gates on a mountain trail", imageUrl: "/attractions/fushimi-inari.jpg" },
       { name: "Kinkaku-ji", description: "Stunning golden pavilion reflected in a mirror pond", imageUrl: "/attractions/kinkakuji.jpg" },
@@ -494,6 +516,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/lisbon.jpg",
     rating: 4.6,
     timezone: "Europe/Lisbon",
+    favoriteFood: { name: "Pastel de Nata", description: "Crispy custard tart with a caramelized top, dusted with cinnamon and powdered sugar" },
     attractions: [
       { name: "Belém Tower", description: "16th-century fortified tower on the Tagus River", imageUrl: "/attractions/belem-tower.jpg" },
       { name: "Alfama District", description: "Oldest neighborhood with Fado music and narrow alleys", imageUrl: "/attractions/alfama.jpg" },
@@ -512,6 +535,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/vienna.jpg",
     rating: 4.7,
     timezone: "Europe/Vienna",
+    favoriteFood: { name: "Wiener Schnitzel", description: "Golden, crispy breaded veal cutlet served with a wedge of lemon and potato salad" },
     attractions: [
       { name: "Schönbrunn Palace", description: "Former imperial summer residence with vast gardens", imageUrl: "/attractions/schonbrunn.jpg" },
       { name: "St. Stephen's Cathedral", description: "Gothic cathedral dominating the city's skyline", imageUrl: "/attractions/st-stephens.jpg" },
@@ -530,6 +554,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/hongkong.jpg",
     rating: 4.6,
     timezone: "Asia/Hong_Kong",
+    favoriteFood: { name: "Dim Sum", description: "Steamed dumplings, buns, and small bites served from bamboo baskets with tea" },
     attractions: [
       { name: "Victoria Peak", description: "Mountain summit with panoramic skyline views", imageUrl: "/attractions/victoria-peak.jpg" },
       { name: "Big Buddha", description: "Massive bronze seated Buddha statue on Lantau Island", imageUrl: "/attractions/big-buddha.jpg" },
@@ -548,6 +573,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/cusco.jpg",
     rating: 4.7,
     timezone: "America/Lima",
+    favoriteFood: { name: "Cuy al Horno", description: "Roasted guinea pig, a traditional Andean delicacy served whole with potatoes" },
     attractions: [
       { name: "Sacsayhuamán", description: "Massive Inca fortress with perfectly fitted stones", imageUrl: "/attractions/sacsayhuaman.jpg" },
       { name: "Plaza de Armas", description: "Grand central square surrounded by colonial arcades", imageUrl: "/attractions/plaza-armas.jpg" },
@@ -566,6 +592,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/cairo.jpg",
     rating: 4.5,
     timezone: "Africa/Cairo",
+    favoriteFood: { name: "Koshari", description: "Egypt's national dish of rice, lentils, and pasta topped with spiced tomato sauce and crispy onions" },
     attractions: [
       { name: "Pyramids of Giza", description: "Last surviving wonder of the ancient world", imageUrl: "/attractions/pyramids.jpg" },
       { name: "Egyptian Museum", description: "Vast collection including Tutankhamun's treasures", imageUrl: "/attractions/egyptian-museum.jpg" },
@@ -584,6 +611,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/reykjavik.jpg",
     rating: 4.7,
     timezone: "Atlantic/Reykjavik",
+    favoriteFood: { name: "Lamb Soup", description: "Hearty Icelandic lamb stew with root vegetables and fresh herbs" },
     attractions: [
       { name: "Blue Lagoon", description: "Geothermal spa with milky blue mineral-rich waters", imageUrl: "/attractions/blue-lagoon.jpg" },
       { name: "Hallgrímskirkja", description: "Striking church inspired by basalt column formations", imageUrl: "/attractions/hallgrimskirkja.jpg" },
@@ -602,6 +630,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/kualalumpur.jpg",
     rating: 4.4,
     timezone: "Asia/Kuala_Lumpur",
+    favoriteFood: { name: "Nasi Lemak", description: "Fragrant coconut rice with sambal, anchovies, peanuts, and a boiled egg" },
     attractions: [
       { name: "Petronas Twin Towers", description: "Iconic 88-storey twin skyscrapers with skybridge", imageUrl: "/attractions/petronas.jpg" },
       { name: "Batu Caves", description: "Limestone caves with a towering Hindu shrine", imageUrl: "/attractions/batu-caves.jpg" },
@@ -620,6 +649,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/hanoi.jpg",
     rating: 4.5,
     timezone: "Asia/Ho_Chi_Minh",
+    favoriteFood: { name: "Pho", description: "Aromatic beef or chicken noodle soup with fresh herbs, bean sprouts, and lime" },
     attractions: [
       { name: "Hoan Kiem Lake", description: "Scenic lake with the iconic red Huc Bridge", imageUrl: "/attractions/hoan-kiem.jpg" },
       { name: "Temple of Literature", description: "Vietnam's first university dating to 1070", imageUrl: "/attractions/temple-literature.jpg" },
@@ -638,6 +668,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/sanfrancisco.jpg",
     rating: 4.6,
     timezone: "America/Los_Angeles",
+    favoriteFood: { name: "Clam Chowder in Bread Bowl", description: "Creamy New England clam chowder served in a hollowed-out sourdough bread bowl" },
     attractions: [
       { name: "Golden Gate Bridge", description: "Iconic orange suspension bridge spanning the bay", imageUrl: "/attractions/golden-gate.jpg" },
       { name: "Alcatraz Island", description: "Notorious former federal prison on a bay island", imageUrl: "/attractions/alcatraz.jpg" },
@@ -656,6 +687,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/athens.jpg",
     rating: 4.6,
     timezone: "Europe/Athens",
+    favoriteFood: { name: "Souvlaki", description: "Grilled meat skewers served in pita with tzatziki, tomatoes, and crispy fries" },
     attractions: [
       { name: "Acropolis", description: "Ancient citadel with the iconic Parthenon temple", imageUrl: "/attractions/acropolis.jpg" },
       { name: "Plaka District", description: "Charming old neighborhood at the foot of the Acropolis", imageUrl: "/attractions/plaka.jpg" },
@@ -674,6 +706,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/mexicocity.jpg",
     rating: 4.5,
     timezone: "America/Mexico_City",
+    favoriteFood: { name: "Tacos al Pastor", description: "Spit-roasted pork tacos with pineapple, cilantro, and onion on corn tortillas" },
     attractions: [
       { name: "Teotihuacán", description: "Massive ancient pyramids of the Sun and Moon", imageUrl: "/attractions/teotihuacan.jpg" },
       { name: "Frida Kahlo Museum", description: "Artist's iconic Blue House turned museum", imageUrl: "/attractions/frida-kahlo.jpg" },
@@ -692,6 +725,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/petra.jpg",
     rating: 4.8,
     timezone: "Asia/Amman",
+    favoriteFood: { name: "Mansaf", description: "Jordan's national dish of lamb cooked in fermented yogurt sauce served over rice" },
     attractions: [
       { name: "The Treasury (Al-Khazneh)", description: "Iconic rose-red facade carved into the cliff", imageUrl: "/attractions/treasury.jpg" },
       { name: "The Siq", description: "Dramatic narrow gorge entrance to the ancient city", imageUrl: "/attractions/siq.jpg" },
@@ -710,6 +744,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/dublin.jpg",
     rating: 4.5,
     timezone: "Europe/Dublin",
+    favoriteFood: { name: "Irish Stew", description: "Hearty slow-cooked stew of lamb, potatoes, carrots, and onions with fresh parsley" },
     attractions: [
       { name: "Trinity College & Book of Kells", description: "Historic university housing a medieval illuminated manuscript", imageUrl: "/attractions/trinity.jpg" },
       { name: "Guinness Storehouse", description: "Seven-storey brewery experience with rooftop bar", imageUrl: "/attractions/guinness.jpg" },
@@ -728,6 +763,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/seoul.jpg",
     rating: 4.6,
     timezone: "Asia/Seoul",
+    favoriteFood: { name: "Korean BBQ", description: "Tabletop-grilled marinated beef bulgogi with banchan side dishes and ssamjang" },
     attractions: [
       { name: "Gyeongbokgung Palace", description: "Grandest of the five Joseon dynasty palaces", imageUrl: "/attractions/gyeongbokgung.jpg" },
       { name: "Bukchon Hanok Village", description: "Traditional Korean houses nestled between palaces", imageUrl: "/attractions/bukchon.jpg" },
@@ -746,6 +782,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/siemreap.jpg",
     rating: 4.7,
     timezone: "Asia/Phnom_Penh",
+    favoriteFood: { name: "Fish Amok", description: "Creamy coconut fish curry steamed in banana leaves with kroeung spice paste" },
     attractions: [
       { name: "Angkor Wat", description: "World's largest religious monument and sunrise icon", imageUrl: "/attractions/angkor-wat.jpg" },
       { name: "Ta Prohm", description: "Jungle-enveloped temple famously used in Tomb Raider", imageUrl: "/attractions/ta-prohm.jpg" },
@@ -764,6 +801,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/florence.jpg",
     rating: 4.8,
     timezone: "Europe/Rome",
+    favoriteFood: { name: "Bistecca alla Fiorentina", description: "Thick-cut T-bone steak from Chianina cattle, grilled rare over hot coals" },
     attractions: [
       { name: "Uffizi Gallery", description: "Premier art museum with Botticelli's Birth of Venus", imageUrl: "/attractions/uffizi.jpg" },
       { name: "Florence Cathedral (Duomo)", description: "Iconic red-tiled dome by Brunelleschi", imageUrl: "/attractions/duomo-florence.jpg" },
@@ -782,6 +820,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/jaipur.jpg",
     rating: 4.5,
     timezone: "Asia/Kolkata",
+    favoriteFood: { name: "Dal Baati Churma", description: "Rajasthani specialty of baked wheat balls with spiced lentils and sweet crushed wheat" },
     attractions: [
       { name: "Amber Fort", description: "Hilltop fortress with mirror-inlaid chambers", imageUrl: "/attractions/amber-fort.jpg" },
       { name: "Hawa Mahal", description: "Palace of Winds with its honeycomb facade", imageUrl: "/attractions/hawa-mahal.jpg" },
@@ -800,6 +839,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/vancouver.jpg",
     rating: 4.6,
     timezone: "America/Vancouver",
+    favoriteFood: { name: "Poutine", description: "Crispy fries smothered in rich gravy and topped with squeaky cheese curds" },
     attractions: [
       { name: "Stanley Park", description: "1,000-acre urban park with seawall and totem poles", imageUrl: "/attractions/stanley-park.jpg" },
       { name: "Capilano Suspension Bridge", description: "Swaying bridge 70m above a rainforest canyon", imageUrl: "/attractions/capilano.jpg" },
@@ -818,6 +858,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/zanzibar.jpg",
     rating: 4.5,
     timezone: "Africa/Dar_es_Salaam",
+    favoriteFood: { name: "Zanzibar Pizza", description: "Crispy street-food crepe filled with meat, egg, vegetables, and spices" },
     attractions: [
       { name: "Stone Town", description: "UNESCO labyrinth of narrow alleys and carved doors", imageUrl: "/attractions/stone-town.jpg" },
       { name: "Nungwi Beach", description: "Pristine white-sand beach on the northern tip", imageUrl: "/attractions/nungwi.jpg" },
@@ -836,6 +877,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/edinburgh.jpg",
     rating: 4.6,
     timezone: "Europe/London",
+    favoriteFood: { name: "Haggis", description: "Savory pudding of sheep's offal with oatmeal, onions, and spices in a casing" },
     attractions: [
       { name: "Edinburgh Castle", description: "Historic fortress dominating the city from Castle Rock", imageUrl: "/attractions/edinburgh-castle.jpg" },
       { name: "Arthur's Seat", description: "Ancient volcano offering panoramic city views", imageUrl: "/attractions/arthurs-seat.jpg" },
@@ -854,6 +896,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/cartagena.jpg",
     rating: 4.5,
     timezone: "America/Bogota",
+    favoriteFood: { name: "Arepa de Huevo", description: "Deep-fried corn cake stuffed with a whole egg and seasoned ground beef" },
     attractions: [
       { name: "Walled City", description: "UNESCO-listed colonial center with colorful facades", imageUrl: "/attractions/walled-city.jpg" },
       { name: "Castillo San Felipe", description: "Massive Spanish fortress with underground tunnels", imageUrl: "/attractions/san-felipe.jpg" },
@@ -872,6 +915,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/chiangmai.jpg",
     rating: 4.6,
     timezone: "Asia/Bangkok",
+    favoriteFood: { name: "Khao Soi", description: "Northern Thai coconut curry noodle soup topped with crispy fried noodles" },
     attractions: [
       { name: "Doi Suthep", description: "Sacred hilltop temple with sweeping city views", imageUrl: "/attractions/doi-suthep.jpg" },
       { name: "Night Bazaar", description: "Sprawling evening market with crafts and street food", imageUrl: "/attractions/night-bazaar.jpg" },
@@ -890,6 +934,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/berlin.jpg",
     rating: 4.5,
     timezone: "Europe/Berlin",
+    favoriteFood: { name: "Currywurst", description: "Sliced pork sausage smothered in curry ketchup, served with fries or a bread roll" },
     attractions: [
       { name: "Brandenburg Gate", description: "Iconic 18th-century neoclassical monument", imageUrl: "/attractions/brandenburg.jpg" },
       { name: "Museum Island", description: "UNESCO island complex of five world-class museums", imageUrl: "/attractions/museum-island.jpg" },
@@ -908,6 +953,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/queenstown.jpg",
     rating: 4.8,
     timezone: "Pacific/Auckland",
+    favoriteFood: { name: "Fergburger", description: "Legendary oversized gourmet burger from Queenstown's iconic burger joint" },
     attractions: [
       { name: "Milford Sound", description: "Majestic fjord with cascading waterfalls and dolphins", imageUrl: "/attractions/milford-sound.jpg" },
       { name: "AJ Hackett Bungy", description: "World's first commercial bungee jumping site", imageUrl: "/attractions/bungy.jpg" },
@@ -926,6 +972,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/havana.jpg",
     rating: 4.4,
     timezone: "America/Havana",
+    favoriteFood: { name: "Ropa Vieja", description: "Shredded beef braised in tomato sauce with peppers and onions, served with rice and beans" },
     attractions: [
       { name: "Old Havana (Habana Vieja)", description: "UNESCO World Heritage colonial district", imageUrl: "/attractions/old-havana.jpg" },
       { name: "Malecón", description: "Iconic seaside promenade stretching 8 km along the coast", imageUrl: "/attractions/malecon.jpg" },
@@ -944,6 +991,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/dubrovnik.jpg",
     rating: 4.7,
     timezone: "Europe/Zagreb",
+    favoriteFood: { name: "Black Risotto", description: "Creamy risotto made with cuttlefish ink, giving it a striking dark color and briny flavor" },
     attractions: [
       { name: "City Walls", description: "1,940m of medieval fortifications with sea views", imageUrl: "/attractions/city-walls.jpg" },
       { name: "Stradun", description: "Limestone-paved main street through the Old Town", imageUrl: "/attractions/stradun.jpg" },
@@ -962,6 +1010,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/lakecomo.jpg",
     rating: 4.7,
     timezone: "Europe/Rome",
+    favoriteFood: { name: "Pizzoccheri", description: "Hearty buckwheat pasta with melted cheese, potatoes, and savoy cabbage from Lombardy" },
     attractions: [
       { name: "Villa del Balbianello", description: "Elegant lakeside villa featured in Star Wars and Bond", imageUrl: "/attractions/balbianello.jpg" },
       { name: "Bellagio", description: "Picturesque village known as the Pearl of the Lake", imageUrl: "/attractions/bellagio.jpg" },
@@ -980,6 +1029,7 @@ const destinations: Record<string, Destination> = {
     imageUrl: "/destinations/kathmandu.jpg",
     rating: 4.4,
     timezone: "Asia/Kathmandu",
+    favoriteFood: { name: "Momo", description: "Steamed Nepali dumplings filled with spiced meat or vegetables, served with tomato chutney" },
     attractions: [
       { name: "Swayambhunath (Monkey Temple)", description: "Ancient hilltop stupa with panoramic valley views", imageUrl: "/attractions/swayambhunath.jpg" },
       { name: "Boudhanath Stupa", description: "One of the largest spherical stupas in the world", imageUrl: "/attractions/boudhanath.jpg" },
