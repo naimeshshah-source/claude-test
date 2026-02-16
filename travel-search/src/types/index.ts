@@ -15,6 +15,7 @@ export interface Destination {
   imageUrl: string;
   rating: number;
   timezone: string;
+  favoriteFood: { name: string; description: string };
   attractions: Attraction[];
 }
 
