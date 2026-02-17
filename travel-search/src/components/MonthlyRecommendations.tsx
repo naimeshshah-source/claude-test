@@ -104,7 +104,14 @@ export default function MonthlyRecommendations() {
                     <span className="mr-1.5">{countryFlag(dest.countryCode)}</span>
                     {dest.name}
                   </h3>
-                  <p className="text-slate-500 text-sm">{dest.country}</p>
+                  <p className="text-slate-500 text-sm">
+                    <span className="inline-flex items-center gap-1.5">
+                      {dest.country}
+                      <span className="bg-slate-100 text-slate-500 text-xs font-mono px-1.5 py-0.5 rounded">
+                        {dest.countryCode}
+                      </span>
+                    </span>
+                  </p>
                 </div>
                 <div className="flex items-center gap-1 bg-yellow-50 px-2 py-1 rounded-lg">
                   <svg
