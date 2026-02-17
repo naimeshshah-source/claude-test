@@ -79,7 +79,14 @@ export default function DestinationCard({ result }: DestinationCardProps) {
               <span className="mr-2">{countryFlag(destination.countryCode)}</span>
               {destination.name}
             </h2>
-            <p className="text-blue-100 text-lg mt-1">{destination.country}</p>
+            <p className="text-blue-100 text-lg mt-1">
+              <span className="inline-flex items-center gap-1.5">
+                {destination.country}
+                <span className="bg-white/15 text-white text-xs font-mono px-1.5 py-0.5 rounded">
+                  {destination.countryCode}
+                </span>
+              </span>
+            </p>
           </div>
           <div className="text-right">
             <StarRating rating={destination.rating} />
