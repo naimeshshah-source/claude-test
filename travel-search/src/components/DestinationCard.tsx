@@ -2,6 +2,14 @@
 
 import { SearchResult } from "@/types";
 
+function countryFlag(countryCode: string) {
+  return countryCode
+    .toUpperCase()
+    .split("")
+    .map((c) => String.fromCodePoint(0x1f1e6 + c.charCodeAt(0) - 65))
+    .join("");
+}
+
 interface DestinationCardProps {
   result: SearchResult;
 }
@@ -67,7 +75,10 @@ export default function DestinationCard({ result }: DestinationCardProps) {
       <div className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 px-8 py-8 text-white">
         <div className="flex items-start justify-between">
           <div>
-            <h2 className="text-3xl font-bold">{destination.name}</h2>
+            <h2 className="text-3xl font-bold">
+              <span className="mr-2">{countryFlag(destination.countryCode)}</span>
+              {destination.name}
+            </h2>
             <p className="text-blue-100 text-lg mt-1">{destination.country}</p>
           </div>
           <div className="text-right">

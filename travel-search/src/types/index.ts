@@ -8,6 +8,7 @@ export interface Destination {
   slug: string;
   name: string;
   country: string;
+  countryCode: string;
   description: string;
   bestMonths: string[];
   averageTemp: { high: number; low: number };
