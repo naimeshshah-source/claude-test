@@ -5,6 +5,7 @@ const destinations: Record<string, Destination> = {
     slug: "paris",
     name: "Paris",
     country: "France",
+    countryCode: "FR",
     description:
       "The City of Light enchants visitors with its iconic landmarks, world-class museums, and charming café culture. From the Eiffel Tower to Montmartre, every corner tells a story.",
     bestMonths: ["April", "May", "June", "September", "October"],
@@ -30,6 +31,7 @@ const destinations: Record<string, Destination> = {
     slug: "tokyo",
     name: "Tokyo",
     country: "Japan",
+    countryCode: "JP",
     description:
       "A mesmerizing blend of ultramodern and traditional, Tokyo dazzles with neon-lit skyscrapers, ancient temples, incredible food, and a culture that seamlessly bridges past and future.",
     bestMonths: ["March", "April", "May", "October", "November"],
@@ -55,6 +57,7 @@ const destinations: Record<string, Destination> = {
     slug: "bali",
     name: "Bali",
     country: "Indonesia",
+    countryCode: "ID",
     description:
       "A tropical paradise known for its lush rice terraces, stunning temples, vibrant arts scene, and world-class surfing. Bali offers spiritual rejuvenation and adventure in equal measure.",
     bestMonths: ["April", "May", "June", "July", "August", "September"],
@@ -80,6 +83,7 @@ const destinations: Record<string, Destination> = {
     slug: "barcelona",
     name: "Barcelona",
     country: "Spain",
+    countryCode: "ES",
     description:
       "A vibrant Mediterranean gem where Gaudí's fantastical architecture meets golden beaches, incredible tapas, and an electric nightlife scene that pulses through winding Gothic streets.",
     bestMonths: ["May", "June", "September", "October"],
@@ -105,6 +109,7 @@ const destinations: Record<string, Destination> = {
     slug: "new-york",
     name: "New York",
     country: "USA",
+    countryCode: "US",
     description:
       "The city that never sleeps offers an unmatched energy with iconic skyline views, Broadway shows, diverse neighborhoods, world-class dining, and cultural institutions at every turn.",
     bestMonths: ["April", "May", "June", "September", "October", "November"],
@@ -130,6 +135,7 @@ const destinations: Record<string, Destination> = {
     slug: "london",
     name: "London",
     country: "United Kingdom",
+    countryCode: "GB",
     description:
       "A city steeped in history yet buzzing with contemporary culture. From Buckingham Palace to Borough Market, London offers royal grandeur alongside cutting-edge art and cuisine.",
     bestMonths: ["May", "June", "July", "August", "September"],
@@ -155,6 +161,7 @@ const destinations: Record<string, Destination> = {
     slug: "rome",
     name: "Rome",
     country: "Italy",
+    countryCode: "IT",
     description:
       "The Eternal City where ancient ruins stand alongside Renaissance masterpieces. Savor la dolce vita with incredible pasta, gelato, and espresso amid 3,000 years of history.",
     bestMonths: ["April", "May", "June", "September", "October"],
@@ -180,6 +187,7 @@ const destinations: Record<string, Destination> = {
     slug: "dubai",
     name: "Dubai",
     country: "UAE",
+    countryCode: "AE",
     description:
       "A futuristic oasis of luxury rising from the desert. Dubai dazzles with record-breaking architecture, lavish shopping malls, golden beaches, and an ever-evolving skyline.",
     bestMonths: [
@@ -211,6 +219,7 @@ const destinations: Record<string, Destination> = {
     slug: "sydney",
     name: "Sydney",
     country: "Australia",
+    countryCode: "AU",
     description:
       "A stunning harbor city where golden beaches meet cosmopolitan culture. Iconic landmarks, world-class dining, and year-round outdoor adventures make Sydney truly unforgettable.",
     bestMonths: ["September", "October", "November", "March", "April", "May"],
@@ -236,6 +245,7 @@ const destinations: Record<string, Destination> = {
     slug: "machu-picchu",
     name: "Machu Picchu",
     country: "Peru",
+    countryCode: "PE",
     description:
       "The Lost City of the Incas perched high in the Andes. This breathtaking archaeological wonder offers a profound connection to ancient civilization amid dramatic mountain scenery.",
     bestMonths: ["April", "May", "September", "October"],
@@ -261,6 +271,7 @@ const destinations: Record<string, Destination> = {
     slug: "santorini",
     name: "Santorini",
     country: "Greece",
+    countryCode: "GR",
     description:
       "A breathtaking volcanic island with iconic white-washed buildings and blue domes perched on dramatic cliffs overlooking the azure Aegean Sea. Famous for spectacular sunsets.",
     bestMonths: ["May", "June", "September", "October"],
@@ -286,6 +297,7 @@ const destinations: Record<string, Destination> = {
     slug: "maldives",
     name: "Maldives",
     country: "Maldives",
+    countryCode: "MV",
     description:
       "A tropical paradise of crystal-clear turquoise waters, pristine white-sand beaches, and luxury overwater villas. The ultimate destination for diving, relaxation, and romance.",
     bestMonths: [
@@ -318,6 +330,7 @@ const destinations: Record<string, Destination> = {
     slug: "amsterdam",
     name: "Amsterdam",
     country: "Netherlands",
+    countryCode: "NL",
     description:
       "A charming city of canal rings, cycling culture, and world-class art museums. Amsterdam blends a rich Golden Age heritage with progressive modern energy.",
     bestMonths: ["April", "May", "June", "September"],
@@ -337,6 +350,7 @@ const destinations: Record<string, Destination> = {
     slug: "bangkok",
     name: "Bangkok",
     country: "Thailand",
+    countryCode: "TH",
     description:
       "A vibrant capital where ornate temples rise alongside gleaming skyscrapers. Bangkok enthralls with its legendary street food, floating markets, and exuberant nightlife.",
     bestMonths: ["November", "December", "January", "February"],
@@ -356,6 +370,7 @@ const destinations: Record<string, Destination> = {
     slug: "cape-town",
     name: "Cape Town",
     country: "South Africa",
+    countryCode: "ZA",
     description:
       "A breathtaking city nestled between Table Mountain and the Atlantic Ocean. Cape Town offers dramatic landscapes, vibrant culture, world-class wine, and incredible biodiversity.",
     bestMonths: ["October", "November", "December", "January", "February", "March"],
@@ -375,6 +390,7 @@ const destinations: Record<string, Destination> = {
     slug: "marrakech",
     name: "Marrakech",
     country: "Morocco",
+    countryCode: "MA",
     description:
       "An intoxicating city of spice-scented souks, ornate palaces, and the bustling Jemaa el-Fnaa square. Marrakech immerses visitors in a sensory feast of color, sound, and flavor.",
     bestMonths: ["March", "April", "May", "October", "November"],
@@ -394,6 +410,7 @@ const destinations: Record<string, Destination> = {
     slug: "prague",
     name: "Prague",
     country: "Czech Republic",
+    countryCode: "CZ",
     description:
       "The City of a Hundred Spires enchants with its fairy-tale Old Town, Gothic cathedrals, and lively beer culture. Prague is one of Europe's most photogenic and affordable capitals.",
     bestMonths: ["April", "May", "June", "September", "October"],
@@ -413,6 +430,7 @@ const destinations: Record<string, Destination> = {
     slug: "istanbul",
     name: "Istanbul",
     country: "Turkey",
+    countryCode: "TR",
     description:
       "A transcontinental metropolis straddling Europe and Asia. Istanbul dazzles with its Byzantine and Ottoman heritage, bustling bazaars, and a culinary scene that bridges two worlds.",
     bestMonths: ["April", "May", "September", "October"],
@@ -432,6 +450,7 @@ const destinations: Record<string, Destination> = {
     slug: "rio-de-janeiro",
     name: "Rio de Janeiro",
     country: "Brazil",
+    countryCode: "BR",
     description:
       "A vibrant city of samba rhythms, golden beaches, and dramatic mountain scenery. Rio pulses with carnival energy, from Copacabana's shores to Sugarloaf Mountain's summit.",
     bestMonths: ["May", "June", "July", "August", "September"],
@@ -451,6 +470,7 @@ const destinations: Record<string, Destination> = {
     slug: "singapore",
     name: "Singapore",
     country: "Singapore",
+    countryCode: "SG",
     description:
       "A gleaming city-state where futuristic gardens meet hawker stall feasts. Singapore is a melting pot of Malay, Chinese, and Indian cultures wrapped in tropical greenery.",
     bestMonths: ["February", "March", "April", "October", "November"],
@@ -470,6 +490,7 @@ const destinations: Record<string, Destination> = {
     slug: "buenos-aires",
     name: "Buenos Aires",
     country: "Argentina",
+    countryCode: "AR",
     description:
       "The Paris of South America pulsates with tango, sizzling steakhouses, and European-inspired architecture. Buenos Aires is a cultural powerhouse brimming with passion.",
     bestMonths: ["March", "April", "May", "October", "November"],
@@ -489,6 +510,7 @@ const destinations: Record<string, Destination> = {
     slug: "kyoto",
     name: "Kyoto",
     country: "Japan",
+    countryCode: "JP",
     description:
       "Japan's cultural heart, where thousands of temples, serene bamboo groves, and exquisite kaiseki cuisine preserve centuries of tradition amid stunning natural beauty.",
     bestMonths: ["March", "April", "May", "October", "November"],
@@ -508,6 +530,7 @@ const destinations: Record<string, Destination> = {
     slug: "lisbon",
     name: "Lisbon",
     country: "Portugal",
+    countryCode: "PT",
     description:
       "A sun-drenched hillside capital with vintage trams, pastel-colored buildings, and legendary custard tarts. Lisbon blends old-world charm with a vibrant contemporary arts scene.",
     bestMonths: ["April", "May", "June", "September", "October"],
@@ -527,6 +550,7 @@ const destinations: Record<string, Destination> = {
     slug: "vienna",
     name: "Vienna",
     country: "Austria",
+    countryCode: "AT",
     description:
       "An imperial city of grand palaces, classical music, and sublime coffee house culture. Vienna combines Habsburg elegance with cutting-edge contemporary design.",
     bestMonths: ["April", "May", "June", "September", "October"],
@@ -546,6 +570,7 @@ const destinations: Record<string, Destination> = {
     slug: "hong-kong",
     name: "Hong Kong",
     country: "China",
+    countryCode: "CN",
     description:
       "A dazzling skyline meets ancient traditions in this dynamic metropolis. Hong Kong thrills with dim sum feasts, harbor views, hiking trails, and a relentless urban energy.",
     bestMonths: ["October", "November", "December"],
@@ -565,6 +590,7 @@ const destinations: Record<string, Destination> = {
     slug: "cusco",
     name: "Cusco",
     country: "Peru",
+    countryCode: "PE",
     description:
       "The former capital of the Inca Empire, Cusco captivates with its blend of Inca stonework and Spanish colonial architecture set high in the Peruvian Andes.",
     bestMonths: ["May", "June", "July", "August", "September"],
@@ -584,6 +610,7 @@ const destinations: Record<string, Destination> = {
     slug: "cairo",
     name: "Cairo",
     country: "Egypt",
+    countryCode: "EG",
     description:
       "A chaotic, captivating megalopolis where the ancient pyramids of Giza stand watch over a teeming modern city. Cairo is the gateway to pharaonic wonders and Nile cruises.",
     bestMonths: ["October", "November", "December", "January", "February", "March"],
@@ -603,6 +630,7 @@ const destinations: Record<string, Destination> = {
     slug: "reykjavik",
     name: "Reykjavik",
     country: "Iceland",
+    countryCode: "IS",
     description:
       "The world's northernmost capital, a gateway to glaciers, geysers, and the Northern Lights. Reykjavik pairs raw natural beauty with colorful streets and creative culture.",
     bestMonths: ["June", "July", "August"],
@@ -622,6 +650,7 @@ const destinations: Record<string, Destination> = {
     slug: "kuala-lumpur",
     name: "Kuala Lumpur",
     country: "Malaysia",
+    countryCode: "MY",
     description:
       "A multicultural capital where gleaming skyscrapers tower above colonial-era buildings, bustling hawker stalls, and ornate mosques. KL is Southeast Asia's most diverse city.",
     bestMonths: ["January", "February", "June", "July", "August"],
@@ -641,6 +670,7 @@ const destinations: Record<string, Destination> = {
     slug: "hanoi",
     name: "Hanoi",
     country: "Vietnam",
+    countryCode: "VN",
     description:
       "Vietnam's captivating capital where French colonial elegance meets ancient Vietnamese culture. Hanoi charms with its Old Quarter, street food, and serene lakes.",
     bestMonths: ["October", "November", "March", "April"],
@@ -660,6 +690,7 @@ const destinations: Record<string, Destination> = {
     slug: "san-francisco",
     name: "San Francisco",
     country: "USA",
+    countryCode: "US",
     description:
       "A hilly, fog-kissed city of iconic bridges, Victorian painted ladies, and pioneering tech culture. San Francisco enchants with its diverse neighborhoods and stunning bay views.",
     bestMonths: ["September", "October", "April", "May"],
@@ -679,6 +710,7 @@ const destinations: Record<string, Destination> = {
     slug: "athens",
     name: "Athens",
     country: "Greece",
+    countryCode: "GR",
     description:
       "The cradle of Western civilization, where the Acropolis presides over a vibrant modern city. Athens offers ancient ruins, lively tavernas, and warm Mediterranean hospitality.",
     bestMonths: ["April", "May", "June", "September", "October"],
@@ -698,6 +730,7 @@ const destinations: Record<string, Destination> = {
     slug: "mexico-city",
     name: "Mexico City",
     country: "Mexico",
+    countryCode: "MX",
     description:
       "A sprawling, vibrant capital built on the ruins of the Aztec empire. Mexico City astounds with world-class museums, incredible street food, and a deep cultural soul.",
     bestMonths: ["March", "April", "May", "October", "November"],
@@ -717,6 +750,7 @@ const destinations: Record<string, Destination> = {
     slug: "petra",
     name: "Petra",
     country: "Jordan",
+    countryCode: "JO",
     description:
       "The Rose City carved into sandstone cliffs by the Nabataeans over 2,000 years ago. Petra is one of the New Seven Wonders of the World and a bucket-list archaeological marvel.",
     bestMonths: ["March", "April", "May", "October", "November"],
@@ -736,6 +770,7 @@ const destinations: Record<string, Destination> = {
     slug: "dublin",
     name: "Dublin",
     country: "Ireland",
+    countryCode: "IE",
     description:
       "A literary city of Georgian architecture, lively pubs, and warm-hearted locals. Dublin brims with history from Viking origins to its role in modern Irish independence.",
     bestMonths: ["May", "June", "July", "August", "September"],
@@ -755,6 +790,7 @@ const destinations: Record<string, Destination> = {
     slug: "seoul",
     name: "Seoul",
     country: "South Korea",
+    countryCode: "KR",
     description:
       "A high-tech megacity where ancient palaces neighbor K-pop studios and sizzling barbecue joints. Seoul seamlessly merges 600 years of Joseon history with cutting-edge innovation.",
     bestMonths: ["April", "May", "September", "October"],
@@ -774,6 +810,7 @@ const destinations: Record<string, Destination> = {
     slug: "siem-reap",
     name: "Siem Reap",
     country: "Cambodia",
+    countryCode: "KH",
     description:
       "Gateway to the magnificent Angkor temple complex. Siem Reap combines awe-inspiring ancient ruins with a buzzing night market scene and warm Khmer hospitality.",
     bestMonths: ["November", "December", "January", "February", "March"],
@@ -793,6 +830,7 @@ const destinations: Record<string, Destination> = {
     slug: "florence",
     name: "Florence",
     country: "Italy",
+    countryCode: "IT",
     description:
       "The birthplace of the Renaissance, Florence overflows with masterpieces by Michelangelo, Botticelli, and Brunelleschi. Tuscan cuisine and rolling hills complete the magic.",
     bestMonths: ["April", "May", "June", "September", "October"],
@@ -812,6 +850,7 @@ const destinations: Record<string, Destination> = {
     slug: "jaipur",
     name: "Jaipur",
     country: "India",
+    countryCode: "IN",
     description:
       "The Pink City, a regal Rajasthani capital of ornate palaces, majestic forts, and vibrant bazaars. Jaipur dazzles with its rich heritage, textiles, and spice-laden cuisine.",
     bestMonths: ["October", "November", "December", "January", "February", "March"],
@@ -831,6 +870,7 @@ const destinations: Record<string, Destination> = {
     slug: "vancouver",
     name: "Vancouver",
     country: "Canada",
+    countryCode: "CA",
     description:
       "A coastal gem where snow-capped mountains meet the Pacific Ocean. Vancouver offers world-class skiing, stunning parks, a thriving food scene, and multicultural neighborhoods.",
     bestMonths: ["June", "July", "August", "September"],
@@ -850,6 +890,7 @@ const destinations: Record<string, Destination> = {
     slug: "zanzibar",
     name: "Zanzibar",
     country: "Tanzania",
+    countryCode: "TZ",
     description:
       "A tropical archipelago off East Africa known for spice plantations, turquoise waters, and the UNESCO-listed Stone Town. Zanzibar blends Swahili, Arab, and European influences.",
     bestMonths: ["June", "July", "August", "September", "January", "February"],
@@ -869,6 +910,7 @@ const destinations: Record<string, Destination> = {
     slug: "edinburgh",
     name: "Edinburgh",
     country: "United Kingdom",
+    countryCode: "GB",
     description:
       "Scotland's dramatic capital of medieval castles, Georgian elegance, and a world-famous arts festival. Edinburgh's cobblestone streets inspired Harry Potter's magical world.",
     bestMonths: ["May", "June", "July", "August", "September"],
@@ -888,6 +930,7 @@ const destinations: Record<string, Destination> = {
     slug: "cartagena",
     name: "Cartagena",
     country: "Colombia",
+    countryCode: "CO",
     description:
       "A Caribbean jewel of colorful colonial architecture, cobblestone streets, and vibrant plazas. Cartagena's walled Old Town is a living museum of Spanish colonial heritage.",
     bestMonths: ["December", "January", "February", "March", "April"],
@@ -907,6 +950,7 @@ const destinations: Record<string, Destination> = {
     slug: "chiang-mai",
     name: "Chiang Mai",
     country: "Thailand",
+    countryCode: "TH",
     description:
       "The Rose of the North, a laid-back city surrounded by misty mountains and hundreds of Buddhist temples. Chiang Mai is a haven for foodies, digital nomads, and adventurers.",
     bestMonths: ["November", "December", "January", "February"],
@@ -926,6 +970,7 @@ const destinations: Record<string, Destination> = {
     slug: "berlin",
     name: "Berlin",
     country: "Germany",
+    countryCode: "DE",
     description:
       "A creative, edgy capital defined by its turbulent history and thriving arts scene. Berlin captivates with world-class museums, legendary nightlife, and vibrant street art.",
     bestMonths: ["May", "June", "July", "August", "September"],
@@ -945,6 +990,7 @@ const destinations: Record<string, Destination> = {
     slug: "queenstown",
     name: "Queenstown",
     country: "New Zealand",
+    countryCode: "NZ",
     description:
       "The adventure capital of the world, set on the shores of crystal-clear Lake Wakatipu surrounded by the Remarkables mountain range. A paradise for thrill-seekers and nature lovers.",
     bestMonths: ["December", "January", "February", "March"],
@@ -964,6 +1010,7 @@ const destinations: Record<string, Destination> = {
     slug: "havana",
     name: "Havana",
     country: "Cuba",
+    countryCode: "CU",
     description:
       "A time-capsule city of pastel Art Deco buildings, vintage American cars, and irresistible salsa rhythms. Havana pulses with revolutionary history and Caribbean soul.",
     bestMonths: ["November", "December", "January", "February", "March", "April"],
@@ -983,6 +1030,7 @@ const destinations: Record<string, Destination> = {
     slug: "dubrovnik",
     name: "Dubrovnik",
     country: "Croatia",
+    countryCode: "HR",
     description:
       "The Pearl of the Adriatic, a walled medieval city of terracotta rooftops and sparkling blue sea. Dubrovnik gained new fame as a Game of Thrones filming location.",
     bestMonths: ["May", "June", "September", "October"],
@@ -1002,6 +1050,7 @@ const destinations: Record<string, Destination> = {
     slug: "lake-como",
     name: "Lake Como",
     country: "Italy",
+    countryCode: "IT",
     description:
       "A jewel of the Italian Lakes, framed by snow-dusted Alps and dotted with pastel villas and lush gardens. Lake Como has enchanted artists and aristocrats for centuries.",
     bestMonths: ["May", "June", "July", "August", "September"],
@@ -1021,6 +1070,7 @@ const destinations: Record<string, Destination> = {
     slug: "kathmandu",
     name: "Kathmandu",
     country: "Nepal",
+    countryCode: "NP",
     description:
       "A chaotic, colorful gateway to the Himalayas. Kathmandu's ancient temple squares, prayer flags, and mountain panoramas create an unforgettable spiritual and adventure hub.",
     bestMonths: ["March", "April", "May", "October", "November"],
@@ -1034,6 +1084,206 @@ const destinations: Record<string, Destination> = {
       { name: "Swayambhunath (Monkey Temple)", description: "Ancient hilltop stupa with panoramic valley views", imageUrl: "/attractions/swayambhunath.jpg" },
       { name: "Boudhanath Stupa", description: "One of the largest spherical stupas in the world", imageUrl: "/attractions/boudhanath.jpg" },
       { name: "Pashupatinath Temple", description: "Sacred Hindu temple on the Bagmati River", imageUrl: "/attractions/pashupatinath.jpg" },
+    ],
+  },
+  mumbai: {
+    slug: "mumbai",
+    name: "Mumbai",
+    country: "India",
+    countryCode: "IN",
+    description:
+      "India's city of dreams, where Bollywood glamour meets colonial-era architecture and bustling street markets. Mumbai pulses with relentless energy, incredible street food, and the spirit of enterprise.",
+    bestMonths: ["October", "November", "December", "January", "February"],
+    averageTemp: { high: 33, low: 24 },
+    highlights: ["Gateway of India", "Marine Drive", "Elephanta Caves", "Dhobi Ghat", "Chhatrapati Shivaji Terminus"],
+    imageUrl: "/destinations/mumbai.jpg",
+    rating: 4.4,
+    timezone: "Asia/Kolkata",
+    favoriteFood: { name: "Vada Pav", description: "Mumbai's iconic spicy potato fritter sandwiched in a soft bun with chutneys" },
+    attractions: [
+      { name: "Gateway of India", description: "Iconic arch monument overlooking the Arabian Sea", imageUrl: "/attractions/gateway-india.jpg" },
+      { name: "Chhatrapati Shivaji Terminus", description: "UNESCO-listed Victorian Gothic railway station", imageUrl: "/attractions/cst.jpg" },
+      { name: "Elephanta Caves", description: "Ancient rock-cut cave temples on a harbour island", imageUrl: "/attractions/elephanta.jpg" },
+    ],
+  },
+  delhi: {
+    slug: "delhi",
+    name: "Delhi",
+    country: "India",
+    countryCode: "IN",
+    description:
+      "India's sprawling capital where Mughal grandeur meets modern ambition. Delhi layers centuries of history from ancient tombs to the grand boulevards of New Delhi.",
+    bestMonths: ["October", "November", "February", "March"],
+    averageTemp: { high: 34, low: 16 },
+    highlights: ["Red Fort", "Qutub Minar", "India Gate", "Chandni Chowk", "Humayun's Tomb"],
+    imageUrl: "/destinations/delhi.jpg",
+    rating: 4.3,
+    timezone: "Asia/Kolkata",
+    favoriteFood: { name: "Chole Bhature", description: "Spicy chickpea curry served with puffy deep-fried bread, a beloved Delhi breakfast" },
+    attractions: [
+      { name: "Red Fort", description: "Majestic Mughal fortress and UNESCO World Heritage Site", imageUrl: "/attractions/red-fort.jpg" },
+      { name: "Humayun's Tomb", description: "Stunning Mughal garden tomb that inspired the Taj Mahal", imageUrl: "/attractions/humayuns-tomb.jpg" },
+      { name: "Qutub Minar", description: "73-metre tall victory tower dating to the 12th century", imageUrl: "/attractions/qutub-minar.jpg" },
+    ],
+  },
+  goa: {
+    slug: "goa",
+    name: "Goa",
+    country: "India",
+    countryCode: "IN",
+    description:
+      "India's beach paradise blending Portuguese colonial heritage with tropical vibes. Goa enchants with golden shores, vibrant nightlife, spice plantations, and whitewashed churches.",
+    bestMonths: ["November", "December", "January", "February", "March"],
+    averageTemp: { high: 33, low: 23 },
+    highlights: ["Baga Beach", "Basilica of Bom Jesus", "Dudhsagar Falls", "Spice Plantations", "Anjuna Flea Market"],
+    imageUrl: "/destinations/goa.jpg",
+    rating: 4.5,
+    timezone: "Asia/Kolkata",
+    favoriteFood: { name: "Fish Curry Rice", description: "Tangy coconut-based fish curry with steamed rice, the quintessential Goan meal" },
+    attractions: [
+      { name: "Basilica of Bom Jesus", description: "UNESCO-listed 16th-century church housing St. Francis Xavier's relics", imageUrl: "/attractions/bom-jesus.jpg" },
+      { name: "Dudhsagar Falls", description: "Spectacular four-tiered waterfall in the Western Ghats", imageUrl: "/attractions/dudhsagar.jpg" },
+      { name: "Fort Aguada", description: "17th-century Portuguese fort overlooking the Arabian Sea", imageUrl: "/attractions/fort-aguada.jpg" },
+    ],
+  },
+  varanasi: {
+    slug: "varanasi",
+    name: "Varanasi",
+    country: "India",
+    countryCode: "IN",
+    description:
+      "One of the world's oldest continuously inhabited cities, Varanasi is the spiritual heart of Hinduism. Ancient ghats descend to the sacred Ganges, where life, death, and devotion intertwine.",
+    bestMonths: ["October", "November", "February", "March"],
+    averageTemp: { high: 33, low: 16 },
+    highlights: ["Dashashwamedh Ghat", "Ganga Aarti", "Kashi Vishwanath Temple", "Sarnath", "Boat Ride at Dawn"],
+    imageUrl: "/destinations/varanasi.jpg",
+    rating: 4.5,
+    timezone: "Asia/Kolkata",
+    favoriteFood: { name: "Kachori Sabzi", description: "Crispy fried pastry filled with spiced lentils, served with tangy potato curry" },
+    attractions: [
+      { name: "Dashashwamedh Ghat", description: "Main ghat famous for its spectacular evening Ganga Aarti", imageUrl: "/attractions/dashashwamedh.jpg" },
+      { name: "Sarnath", description: "Sacred Buddhist site where Buddha gave his first sermon", imageUrl: "/attractions/sarnath.jpg" },
+      { name: "Kashi Vishwanath Temple", description: "One of Hinduism's most sacred Shiva temples", imageUrl: "/attractions/kashi-vishwanath.jpg" },
+    ],
+  },
+  udaipur: {
+    slug: "udaipur",
+    name: "Udaipur",
+    country: "India",
+    countryCode: "IN",
+    description:
+      "The City of Lakes, a romantic Rajasthani gem of shimmering palaces reflected in tranquil waters. Udaipur enchants with its regal heritage, intricate havelis, and sunset boat rides.",
+    bestMonths: ["October", "November", "December", "January", "February", "March"],
+    averageTemp: { high: 33, low: 16 },
+    highlights: ["City Palace", "Lake Pichola", "Jag Mandir", "Saheliyon ki Bari", "Monsoon Palace"],
+    imageUrl: "/destinations/udaipur.jpg",
+    rating: 4.7,
+    timezone: "Asia/Kolkata",
+    favoriteFood: { name: "Dal Baati Churma", description: "Baked wheat dough balls dipped in ghee, served with spiced lentils and sweet crushed wheat" },
+    attractions: [
+      { name: "City Palace", description: "Sprawling lakeside palace complex with museums and courtyards", imageUrl: "/attractions/udaipur-city-palace.jpg" },
+      { name: "Lake Pichola", description: "Serene artificial lake with island palaces", imageUrl: "/attractions/lake-pichola.jpg" },
+      { name: "Jag Mandir", description: "Island palace with gardens and marble elephants", imageUrl: "/attractions/jag-mandir.jpg" },
+    ],
+  },
+  agra: {
+    slug: "agra",
+    name: "Agra",
+    country: "India",
+    countryCode: "IN",
+    description:
+      "Home to the Taj Mahal, one of the world's most iconic monuments. Agra's Mughal heritage shines through its magnificent forts, tombs, and the unparalleled beauty of white marble at sunrise.",
+    bestMonths: ["October", "November", "February", "March"],
+    averageTemp: { high: 34, low: 14 },
+    highlights: ["Taj Mahal", "Agra Fort", "Fatehpur Sikri", "Mehtab Bagh", "Itimad-ud-Daulah"],
+    imageUrl: "/destinations/agra.jpg",
+    rating: 4.7,
+    timezone: "Asia/Kolkata",
+    favoriteFood: { name: "Petha", description: "Translucent sweet made from ash gourd, a beloved Agra delicacy in many flavors" },
+    attractions: [
+      { name: "Taj Mahal", description: "Ivory-white marble mausoleum and symbol of eternal love", imageUrl: "/attractions/taj-mahal.jpg" },
+      { name: "Agra Fort", description: "Massive red sandstone UNESCO fortress with palatial chambers", imageUrl: "/attractions/agra-fort.jpg" },
+      { name: "Fatehpur Sikri", description: "Abandoned Mughal city with stunning red sandstone architecture", imageUrl: "/attractions/fatehpur-sikri.jpg" },
+    ],
+  },
+  kerala: {
+    slug: "kerala",
+    name: "Kerala",
+    country: "India",
+    countryCode: "IN",
+    description:
+      "God's Own Country, a lush tropical paradise of palm-fringed backwaters, misty hill stations, and Ayurvedic wellness retreats. Kerala offers serene houseboat cruises and vibrant Kathakali performances.",
+    bestMonths: ["September", "October", "November", "December", "January", "February", "March"],
+    averageTemp: { high: 32, low: 23 },
+    highlights: ["Backwater Houseboats", "Munnar Tea Gardens", "Fort Kochi", "Periyar Wildlife", "Kovalam Beach"],
+    imageUrl: "/destinations/kerala.jpg",
+    rating: 4.7,
+    timezone: "Asia/Kolkata",
+    favoriteFood: { name: "Appam with Stew", description: "Lacy rice pancake with a soft center, served with fragrant coconut vegetable stew" },
+    attractions: [
+      { name: "Alleppey Backwaters", description: "Tranquil network of lagoons, lakes, and canals", imageUrl: "/attractions/alleppey.jpg" },
+      { name: "Munnar", description: "Hill station blanketed in rolling tea plantations", imageUrl: "/attractions/munnar.jpg" },
+      { name: "Fort Kochi", description: "Historic quarter with Chinese fishing nets and colonial architecture", imageUrl: "/attractions/fort-kochi.jpg" },
+    ],
+  },
+  kolkata: {
+    slug: "kolkata",
+    name: "Kolkata",
+    country: "India",
+    countryCode: "IN",
+    description:
+      "The cultural capital of India, Kolkata brims with literary heritage, colonial architecture, and artistic passion. From Durga Puja festivities to iconic trams and sweet shops, the city has soul.",
+    bestMonths: ["October", "November", "December", "February", "March"],
+    averageTemp: { high: 33, low: 18 },
+    highlights: ["Victoria Memorial", "Howrah Bridge", "Durga Puja", "College Street", "Kumartuli"],
+    imageUrl: "/destinations/kolkata.jpg",
+    rating: 4.4,
+    timezone: "Asia/Kolkata",
+    favoriteFood: { name: "Rosogolla", description: "Spongy cottage cheese balls soaked in light sugar syrup, Bengal's most famous sweet" },
+    attractions: [
+      { name: "Victoria Memorial", description: "Grand white marble museum dedicated to Queen Victoria", imageUrl: "/attractions/victoria-memorial.jpg" },
+      { name: "Howrah Bridge", description: "Iconic cantilever bridge spanning the Hooghly River", imageUrl: "/attractions/howrah-bridge.jpg" },
+      { name: "Dakshineswar Kali Temple", description: "Sacred Hindu temple on the banks of the Hooghly", imageUrl: "/attractions/dakshineswar.jpg" },
+    ],
+  },
+  amritsar: {
+    slug: "amritsar",
+    name: "Amritsar",
+    country: "India",
+    countryCode: "IN",
+    description:
+      "The spiritual center of Sikhism, home to the breathtaking Golden Temple. Amritsar blends deep devotion with Punjabi exuberance, legendary food, and the moving Wagah Border ceremony.",
+    bestMonths: ["October", "November", "February", "March"],
+    averageTemp: { high: 34, low: 12 },
+    highlights: ["Golden Temple", "Wagah Border Ceremony", "Jallianwala Bagh", "Partition Museum", "Punjabi Street Food"],
+    imageUrl: "/destinations/amritsar.jpg",
+    rating: 4.6,
+    timezone: "Asia/Kolkata",
+    favoriteFood: { name: "Amritsari Kulcha", description: "Stuffed tandoor-baked flatbread with spiced potato filling, served with chole and lassi" },
+    attractions: [
+      { name: "Golden Temple", description: "Holiest Sikh gurdwara with a stunning gold-plated sanctum", imageUrl: "/attractions/golden-temple.jpg" },
+      { name: "Jallianwala Bagh", description: "Memorial garden honoring the 1919 massacre victims", imageUrl: "/attractions/jallianwala-bagh.jpg" },
+      { name: "Wagah Border", description: "Dramatic flag-lowering ceremony at the India-Pakistan border", imageUrl: "/attractions/wagah.jpg" },
+    ],
+  },
+  rishikesh: {
+    slug: "rishikesh",
+    name: "Rishikesh",
+    country: "India",
+    countryCode: "IN",
+    description:
+      "The Yoga Capital of the World, nestled in the Himalayan foothills along the sacred Ganges. Rishikesh draws seekers and adventurers alike with ashrams, white-water rafting, and Beatles history.",
+    bestMonths: ["September", "October", "November", "March", "April", "May"],
+    averageTemp: { high: 30, low: 14 },
+    highlights: ["Lakshman Jhula", "Beatles Ashram", "River Rafting", "Triveni Ghat Aarti", "Yoga & Meditation"],
+    imageUrl: "/destinations/rishikesh.jpg",
+    rating: 4.5,
+    timezone: "Asia/Kolkata",
+    favoriteFood: { name: "Aloo Puri", description: "Puffy deep-fried bread with spiced potato curry, a popular North Indian breakfast" },
+    attractions: [
+      { name: "Lakshman Jhula", description: "Iconic iron suspension bridge over the Ganges", imageUrl: "/attractions/lakshman-jhula.jpg" },
+      { name: "Beatles Ashram", description: "Abandoned ashram where the Beatles studied meditation in 1968", imageUrl: "/attractions/beatles-ashram.jpg" },
+      { name: "Triveni Ghat", description: "Sacred bathing ghat with evening aarti ceremony", imageUrl: "/attractions/triveni-ghat.jpg" },
     ],
   },
 };
