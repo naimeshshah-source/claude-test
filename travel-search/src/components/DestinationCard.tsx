@@ -3,6 +3,14 @@
 import Image from "next/image";
 import { SearchResult } from "@/types";
 
+function countryFlag(countryCode: string) {
+  return countryCode
+    .toUpperCase()
+    .split("")
+    .map((c) => String.fromCodePoint(0x1f1e6 + c.charCodeAt(0) - 65))
+    .join("");
+}
+
 interface DestinationCardProps {
   result: SearchResult;
 }
@@ -68,6 +76,18 @@ export default function DestinationCard({ result }: DestinationCardProps) {
       <div className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 px-8 py-8 text-white">
         <div className="flex items-start justify-between">
           <div>
+<<<<<<< HEAD
+            <h2 className="text-3xl font-bold">
+              <span className="mr-2">{countryFlag(destination.countryCode)}</span>
+              {destination.name}
+            </h2>
+            <p className="text-blue-100 text-lg mt-1">
+              <span className="inline-flex items-center gap-1.5">
+                {destination.country}
+                <span className="bg-white/15 text-white text-xs font-mono px-1.5 py-0.5 rounded">
+                  {destination.countryCode}
+                </span>
+=======
             <h2 className="text-3xl font-bold flex items-center gap-3">
               <Image
                 src={`https://flagcdn.com/w80/${destination.countryCode.toLowerCase()}.png`}
@@ -82,6 +102,7 @@ export default function DestinationCard({ result }: DestinationCardProps) {
               {destination.country}
               <span className="bg-white/15 text-white text-xs font-mono px-1.5 py-0.5 rounded">
                 {destination.countryCode}
+>>>>>>> 603ebe820d0543c46b5721a1d66ed62624f14aff
               </span>
             </p>
           </div>
