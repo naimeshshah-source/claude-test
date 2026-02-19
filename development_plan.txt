@@ -1,0 +1,571 @@
+================================================================================
+ML-POWERED EXPENSE CATEGORIZATION SYSTEM
+Comprehensive Technical Analysis & Development Plan
+================================================================================
+Date: 2026-02-19
+Project: expense-tracker (Next.js, TypeScript, localStorage)
+Branch: claude/ml-expense-categorization-pXfDC
+================================================================================
+
+EXISTING SYSTEM CONTEXT
+------------------------
+The current expense-tracker is a Next.js application with:
+- 6 categories: Food, Transportation, Entertainment, Shopping, Bills, Other
+- Storage: localStorage (client-side only, no backend)
+- State: React Context (ExpenseContext)
+- Input fields: description (free text), amount, category, date
+
+This architecture is entirely client-side, which profoundly shapes every ML
+decision below -- privacy, model storage, inference, and training all happen
+in the browser.
+
+================================================================================
+1. CORE TECHNICAL CHALLENGES
+================================================================================
+
+1.1 COLD START PROBLEM
+-----------------------
+A new user has zero history. The model cannot learn from data that does not
+exist yet. This is the most fundamental challenge.
+
+  Mitigation layers:
+  a) Rule-based keyword dictionary as the always-on baseline
+  b) Global pre-trained priors (baked into the bundle, not fetched)
+  c) Merchant name normalization database (Uber -> Transportation, etc.)
+  d) User-specific model activates only after N labeled examples (e.g., 10)
+
+1.2 SHORT, AMBIGUOUS TEXT
+--------------------------
+Expense descriptions are typically 1-5 words and highly ambiguous:
+  - "Amazon"      -> Shopping? Entertainment? Bills? (Prime subscription)
+  - "Apple"       -> Food? Entertainment? (App Store, Apple Music)
+  - "Shell"       -> Transportation? Food? (gas station with a Subway inside)
+  - "7-11"        -> Food? Transportation?
+
+  Classic NLP pipelines that rely on rich text features degrade severely here.
+  Merchant-name disambiguation requires a lookup table, not just text features.
+
+1.3 IMPLICIT USER VOCABULARY
+------------------------------
+Different users write descriptions completely differently:
+  User A: "monthly gym membership"  -> Bills
+  User B: "gym"                     -> Entertainment
+  User C: "24hr fitness"            -> Entertainment
+
+  There is no universal ground truth -- the "correct" category is personal.
+  The model must personalize to each user rather than optimize a global label.
+
+1.4 IN-BROWSER MACHINE LEARNING CONSTRAINTS
+--------------------------------------------
+No server = no PyTorch, no scikit-learn, no GPU. Options are:
+  - TensorFlow.js (large bundle ~500KB+ gzipped)
+  - ONNX Runtime Web (lighter, good for inference)
+  - Hand-rolled statistical models in TypeScript (viable for simple classifiers)
+  - WebAssembly modules
+
+  For this system, a hand-rolled Naive Bayes classifier in TypeScript is the
+  right choice: zero extra dependencies, transparent, incrementally trainable,
+  and fast enough for real-time suggestions.
+
+1.5 INCREMENTAL ONLINE LEARNING
+---------------------------------
+The model must update after each user correction without full retraining from
+a dataset stored elsewhere. This rules out gradient-based neural networks
+(which require batched backprop) and favors count-based Bayesian methods where
+updating means incrementing a count.
+
+1.6 CLASS IMBALANCE
+--------------------
+Users spend very differently. "Food" and "Bills" may account for 60% of
+expenses, leaving "Entertainment" and "Shopping" underrepresented. This causes
+the model to over-predict majority classes.
+
+  Mitigation: Laplace (additive) smoothing in Naive Bayes, and a minimum
+  confidence threshold before surfacing a suggestion.
+
+1.7 CONCEPT DRIFT
+------------------
+A user's spending habits change over time (new job, new city, new lifestyle).
+A model trained on 6-month-old data may become stale.
+
+  Mitigation: Recency weighting -- recent corrections count more than old ones.
+  Implement via a sliding window or exponential decay on token counts.
+
+================================================================================
+2. DATA WE NEED TO COLLECT AND HOW
+================================================================================
+
+2.1 TRAINING SIGNAL TYPES
+--------------------------
+
+Primary signals (explicit):
+  - User ACCEPTS a suggestion           -> strong positive label
+  - User CHANGES a suggestion           -> positive for chosen, negative for suggested
+  - User manually picks category        -> labeled example (weaker, no comparison)
+
+Secondary signals (implicit):
+  - Amount ranges per category (e.g., $500+ expenses correlate with Bills)
+  - Day-of-week patterns (Friday/Saturday -> Entertainment)
+  - Time-of-day patterns (7am coffee -> Food, 9pm bar -> Entertainment)
+  - Recurrence patterns (same amount + description monthly -> Bills)
+
+2.2 DATA SCHEMA FOR TRAINING STORAGE
+--------------------------------------
+Store training data separately from expense records, in localStorage under
+the key "ml_training_data":
+
+  interface TrainingRecord {
+    id: string;                     // unique record id
+    tokens: string[];               // normalized tokens from description
+    amountBucket: AmountBucket;     // 'micro'|'small'|'medium'|'large'|'xlarge'
+    dayOfWeek: number;              // 0-6
+    category: ExpenseCategory;      // the FINAL user-confirmed category
+    suggestedCategory?: ExpenseCategory; // what the model suggested (if any)
+    suggestionAccepted?: boolean;   // did user accept suggestion?
+    timestamp: number;              // unix ms, for recency weighting
+    weight: number;                 // 1.0 default, decays with age
+  }
+
+  interface ModelState {
+    version: number;
+    trainedAt: number;
+    totalExamples: number;
+    // token -> category -> count
+    tokenCounts: Record<string, Record<string, number>>;
+    // category -> total example count
+    categoryCounts: Record<string, number>;
+    // amount bucket -> category -> count
+    amountCounts: Record<string, Record<string, number>>;
+  }
+
+  Amount buckets:
+    micro:  < $5
+    small:  $5 - $25
+    medium: $25 - $100
+    large:  $100 - $500
+    xlarge: > $500
+
+2.3 TEXT PREPROCESSING PIPELINE
+---------------------------------
+Input: "Whole Foods Market - groceries"
+Steps:
+  1. Lowercase:          "whole foods market - groceries"
+  2. Strip punctuation:  "whole foods market  groceries"
+  3. Tokenize by space:  ["whole", "foods", "market", "groceries"]
+  4. Remove stop words:  ["whole", "foods", "market", "groceries"]
+     (minimal list: "the", "a", "an", "and", "for", "at", "in", "on")
+  5. Normalize numbers:  replace any token that is pure digits with "<NUM>"
+  6. Apply merchant map: "whole foods" -> merchant token "MERCHANT_WHOLE_FOODS"
+  7. Final tokens:       ["MERCHANT_WHOLE_FOODS", "market", "groceries"]
+
+  The merchant normalization map handles the single biggest source of
+  disambiguation. Maintain a static lookup of ~200 common merchants.
+
+2.4 WHAT NOT TO COLLECT
+------------------------
+  - Do NOT store raw description text in training records (privacy risk if
+    localStorage is inspected by other scripts/extensions)
+  - Do NOT store exact amounts (use buckets only)
+  - Do NOT transmit anything to a server unless user explicitly opts in
+
+================================================================================
+3. ML APPROACHES: RECOMMENDATION AND RATIONALE
+================================================================================
+
+3.1 THREE-LAYER HYBRID ARCHITECTURE
+-------------------------------------
+
+Layer 1 -- Merchant Lookup Table (instant, deterministic)
+  - A static TypeScript map: merchant name -> category
+  - ~200 entries covering the most common merchants globally
+  - Confidence: 0.95 (very high; override all other layers if matched)
+  - Updates: baked into code bundle, updated per app release
+  - Examples:
+      "uber" -> Transportation, "lyft" -> Transportation
+      "spotify" -> Entertainment, "netflix" -> Entertainment
+      "whole foods" -> Food, "trader joe" -> Food
+      "comcast" -> Bills, "at&t" -> Bills, "verizon" -> Bills
+
+Layer 2 -- Rule-Based Keyword Classifier (fast, no training data needed)
+  - A map of keyword -> category with weights
+  - Handles cold-start users with 0 history
+  - Confidence: 0.6-0.75 (medium; surface as suggestion with low confidence UI)
+  - Food keywords: ["restaurant", "cafe", "coffee", "pizza", "burger", "sushi",
+                    "lunch", "dinner", "breakfast", "bakery", "grocery"]
+  - Transportation: ["gas", "fuel", "parking", "transit", "bus", "train",
+                     "flight", "airline", "taxi", "toll", "metro"]
+  - Entertainment:  ["movie", "cinema", "concert", "ticket", "game", "bar",
+                     "club", "museum", "gym", "fitness", "sport"]
+  - Shopping:       ["amazon", "store", "shop", "mall", "clothing", "shoes",
+                     "electronics", "hardware", "pharmacy"]
+  - Bills:          ["rent", "mortgage", "insurance", "utility", "electric",
+                     "water", "internet", "phone", "subscription", "monthly"]
+
+Layer 3 -- Multinomial Naive Bayes (personalized, learns from user)
+  - Trained entirely in-browser on the user's own correction history
+  - Updates incrementally with each labeled example (O(tokens) per update)
+  - Activates when user has >= 10 labeled training records
+  - Confidence: 0.7-0.95 depending on training data volume
+  - Storage: ~5-50KB as JSON in localStorage
+
+3.2 WHY NAIVE BAYES (NOT NEURAL NETWORKS)
+------------------------------------------
+
+For this specific problem:
+  - Short text (1-5 tokens): neural networks' advantage (capturing long-range
+    context) provides no benefit; Naive Bayes assumption of token independence
+    is actually a good fit.
+  - Incremental updates: updating Naive Bayes = incrementing 3-10 integer
+    counts. Neural networks need backpropagation through the whole model.
+  - Interpretability: can explain "suggested Food because: 'restaurant'
+    appears in 47/51 of your Food examples".
+  - Bundle size: 0 extra KB (pure TypeScript). TensorFlow.js adds ~500KB.
+  - Training speed: microseconds. Neural network fine-tuning: seconds.
+  - Accuracy for 6 classes on short text: competitive with neural approaches.
+
+  The one case where a neural approach wins: zero-shot categorization from
+  description alone with no training data. For that, Layer 1 (merchant lookup)
+  and Layer 2 (rules) cover us without requiring a large model download.
+
+3.3 SCORE FUSION
+-----------------
+When all three layers produce scores, fuse them:
+
+  final_score(category) =
+    merchant_score * 0.95           (if merchant match found, dominates)
+    + keyword_score * 0.60          (keyword layer weight)
+    + bayes_score * 0.80            (personalized layer weight, when active)
+    normalized to sum to 1.0
+
+  If max(final_score) < CONFIDENCE_THRESHOLD (0.55), do not suggest; let user
+  pick manually. This avoids noisy low-confidence suggestions that erode trust.
+
+3.4 ALTERNATIVE APPROACHES CONSIDERED AND REJECTED
+----------------------------------------------------
+
+TensorFlow.js neural classifier:
+  Rejected: 500KB+ bundle size for marginal accuracy gain on 1-5 word inputs.
+
+Server-side LLM (e.g., GPT-4):
+  Rejected: requires sending financial descriptions to a third-party server,
+  major privacy concern. Also adds network latency to every keystroke.
+
+k-Nearest Neighbors on embeddings:
+  Rejected: requires storing all training examples and computing distance to
+  each at inference time. Storage and compute scale linearly with history size.
+
+Decision tree / random forest:
+  Rejected: not incrementally updatable without full retraining. Requires
+  batched training from a stored dataset.
+
+================================================================================
+4. PRIVACY AND DATA SECURITY
+================================================================================
+
+4.1 PRIVACY-BY-DESIGN PRINCIPLES
+----------------------------------
+
+  a) On-device by default: All ML training data, model weights, and inference
+     happen exclusively in the user's browser. No financial data touches any
+     server as part of the ML system.
+
+  b) Data minimization: Training records store only tokenized descriptions
+     (not raw text), amount buckets (not exact amounts), and category labels.
+     If the raw description "Whole Foods - $47.23 groceries" is later deleted
+     by the user, its training contribution (token counts) remains but the
+     original text does not.
+
+  c) User ownership and deletion: Provide a "Reset ML model" button in
+     settings that wipes ml_training_data and ml_model_state from localStorage.
+     This is a complete data deletion with no server-side residue.
+
+  d) No silent data collection: The suggestion feature is ON by default (it
+     provides clear value), but a settings toggle allows full opt-out. When
+     opted out, no training records are written.
+
+4.2 XSLT / XSS VECTOR CONSIDERATION
+--------------------------------------
+  Training records are written to localStorage. If any other script on the
+  same origin can read localStorage (via XSS), training data is exposed.
+  Mitigations:
+    - Use a Content Security Policy header to minimize XSS risk
+    - Tokenize descriptions before storing (strip PII patterns like card numbers)
+    - Never store raw description strings in training records
+
+4.3 SENSITIVE CATEGORY DETECTION
+----------------------------------
+  Some expense descriptions may contain sensitive information:
+  ("therapy copay", "AA meeting", "planned parenthood")
+  These descriptions should still be categorizable but their tokens should NOT
+  be stored in training records if they match a sensitivity keyword list.
+  The system learns to categorize them via the general category patterns
+  without memorizing the specific terms.
+
+4.4 OPTIONAL CLOUD SYNC (FUTURE)
+----------------------------------
+  If cloud sync for training data is ever added:
+    - Require explicit opt-in with clear disclosure
+    - Transmit only the model's count matrices (not raw records)
+    - Apply differential privacy noise (epsilon = 1.0) before transmission
+    - Encrypt in transit (TLS) and at rest
+    - Federated aggregation: server combines model updates without seeing
+      individual user data
+
+================================================================================
+5. USER EXPERIENCE FLOW
+================================================================================
+
+5.1 SUGGESTION TRIGGER
+-----------------------
+  - User types in the description field (ExpenseForm.tsx)
+  - After 300ms debounce (to avoid firing on every keystroke):
+    1. Run the three-layer pipeline on current description text + amount field
+    2. If confidence >= 0.55: auto-populate the category dropdown with suggestion
+    3. Show a subtle indicator: category chip with "Suggested" badge
+    4. If confidence < 0.55 or no suggestion: leave category as-is
+
+5.2 SUGGESTION ACCEPTANCE STATES
+----------------------------------
+
+  State A -- High confidence (>= 0.75):
+    Category dropdown auto-filled + green "AI Suggested" badge
+    One-click save without touching category = implicit acceptance
+
+  State B -- Medium confidence (0.55-0.75):
+    Category dropdown auto-filled + yellow "Suggested - Tap to change" badge
+    Prompts user to confirm or change
+
+  State C -- No suggestion (< 0.55):
+    Category dropdown shows placeholder "Select category"
+    No badge; fully manual as before
+
+5.3 VISUAL FEEDBACK DESIGN
+----------------------------
+  - Suggestion badge on the category dropdown (not intrusive)
+  - Confidence bar (optional, advanced mode): shows model certainty
+  - On first suggestion ever: brief tooltip "We'll learn your preferences
+    and improve suggestions over time"
+  - After 20+ accepted suggestions: show "Your expense categorizer has learned
+    from X entries" in the settings/analytics page
+
+5.4 LEARNING FEEDBACK LOOP
+----------------------------
+  User adds expense:
+    1. User types "Netflix" in description, enters $15.99
+    2. Amount bucket: "small"; merchant lookup: MERCHANT_NETFLIX -> Entertainment
+    3. System suggests: Entertainment (confidence 0.95)
+    4. User accepts (submits form without changing category)
+    5. Training record written: tokens=["MERCHANT_NETFLIX"], bucket="small",
+       category="Entertainment", accepted=true
+    6. Naive Bayes counts updated
+
+  User corrects:
+    1. User types "gym membership", $50/month
+    2. Keyword match suggests: Entertainment (keyword "gym")
+    3. User changes to Bills (they consider it a recurring bill)
+    4. Training record: tokens=["gym","membership"], bucket="medium",
+       category="Bills", suggested="Entertainment", accepted=false
+    5. Bayes learns: "gym"+"membership" -> Bills for this user
+
+5.5 BULK RE-CATEGORIZATION (FUTURE FEATURE)
+---------------------------------------------
+  After model trains on enough data, surface a "Smart Review" panel:
+  "Based on your pattern, these 5 expenses might be mis-categorized. Review?"
+  This is a high-value UX feature but requires sufficient training data first.
+
+================================================================================
+6. EDGE CASES AND ERROR HANDLING
+================================================================================
+
+6.1 COLD START (< 10 TRAINING EXAMPLES)
+-----------------------------------------
+  - Layers 1 and 2 only (merchant lookup + keyword rules)
+  - No Naive Bayes contribution
+  - Show "Getting smarter with each expense" helper text
+
+6.2 EMPTY OR VERY SHORT DESCRIPTION
+-------------------------------------
+  - Single character / empty: no suggestion, no badge
+  - Single word that is not a merchant or keyword: no suggestion
+  - Numeric-only description (e.g., "123"): no suggestion, no badge
+
+6.3 AMBIGUOUS MERCHANT (MULTI-CATEGORY)
+-----------------------------------------
+  "Amazon" is Shopping 40% / Entertainment 30% / Bills 30% for many users.
+  - Before user has history: no dominant suggestion -> no badge (manual pick)
+  - After user has history: Naive Bayes resolves based on their personal usage
+  - Consider: showing top 2 suggestions ("Shopping or Bills?") for truly
+    ambiguous cases post-training
+
+6.4 CORRUPT / INVALID TRAINING DATA
+--------------------------------------
+  - Wrap all localStorage reads in try/catch
+  - Validate ModelState schema on load; if invalid, reset to empty model
+  - Never let ML errors propagate to block the expense save flow
+  - Pattern: all ML operations wrapped in try/catch with silent fallback to
+    no-suggestion mode
+
+6.5 LOCALSTORAGE QUOTA EXCEEDED
+---------------------------------
+  localStorage is typically capped at 5-10MB. Training data at 100 bytes per
+  record * 1000 expenses = ~100KB, well within quota. But over years, this
+  could grow. Mitigation:
+  - Cap training records at MAX_TRAINING_RECORDS = 500 (oldest dropped first)
+  - Store model as count matrices (not per-record), which is O(vocabulary size)
+    not O(number of expenses)
+
+6.6 USER CHANGES CATEGORY BACK AND FORTH
+------------------------------------------
+  If user repeatedly changes categories for the same description, the most
+  recent choice is canonical. Training records are append-only but the Naive
+  Bayes update for a correction subtracts the old counts and adds new ones.
+  Implement with an "undo last training update" mechanism keyed by expense ID.
+
+6.7 MODEL ACCURACY DEGRADATION
+--------------------------------
+  If suggestion acceptance rate drops below 40% over the last 20 suggestions,
+  surface a settings prompt: "Your categories seem to be changing. Reset the
+  suggestion model for a fresh start?"
+
+6.8 BROWSER COMPATIBILITY
+---------------------------
+  - localStorage: supported in all modern browsers (IE8+)
+  - No Web Workers needed (Naive Bayes inference is <1ms, safe on main thread)
+  - No WebAssembly needed
+  - Full offline support: model inference works without network
+
+================================================================================
+7. DEPLOYMENT AND MAINTENANCE STRATEGY
+================================================================================
+
+7.1 PHASED ROLLOUT
+-------------------
+
+Phase 1 -- Merchant Lookup + Keyword Rules (no ML yet)
+  Deliverables:
+    - Merchant lookup table (merchantMap.ts): ~200 entries
+    - Keyword rules engine (keywordClassifier.ts)
+    - UI suggestion badge in ExpenseForm.tsx
+    - Training data capture hook (useMLTraining.ts)
+  Value: Immediate improvement for common expenses, zero learning curve.
+
+Phase 2 -- Naive Bayes Personalization
+  Deliverables:
+    - Naive Bayes classifier (naiveBayes.ts): train + predict
+    - ML context provider (MLContext.tsx): manages model state in localStorage
+    - Score fusion layer (categorizer.ts)
+    - Suggestion confidence UI (SuggestionBadge.tsx)
+  Value: Suggestions personalize over time, accuracy improves.
+
+Phase 3 -- Analytics & UX Polish
+  Deliverables:
+    - ML stats panel in analytics page (acceptance rate, top learned merchants)
+    - "Smart Review" bulk re-categorization panel
+    - Settings: toggle suggestions, reset model, export training data
+    - Sensitivity keyword filter
+  Value: Transparency, user control, trust-building.
+
+7.2 FILE STRUCTURE
+-------------------
+
+  src/
+  ├── lib/
+  │   └── ml/
+  │       ├── merchantMap.ts          # static merchant -> category lookup
+  │       ├── keywordClassifier.ts    # rule-based keyword scorer
+  │       ├── naiveBayes.ts           # incremental Naive Bayes classifier
+  │       ├── textPreprocessor.ts     # tokenization + normalization pipeline
+  │       ├── categorizer.ts          # score fusion (all three layers)
+  │       ├── mlStorage.ts            # load/save ModelState to localStorage
+  │       └── types.ts                # TrainingRecord, ModelState, etc.
+  ├── context/
+  │   └── MLContext.tsx               # React context for ML model state
+  ├── hooks/
+  │   └── useExpenseCategorizer.ts    # hook for components to get suggestions
+  └── components/
+      └── SuggestionBadge.tsx         # UI component showing suggestion + confidence
+
+7.3 TESTING STRATEGY
+---------------------
+
+Unit tests (Jest):
+  - textPreprocessor: tokenization edge cases (empty string, numbers, emoji)
+  - merchantMap: lookup hit/miss
+  - keywordClassifier: each category's keywords score correctly
+  - naiveBayes: prior probabilities, posterior computation, incremental update
+  - categorizer: score fusion, confidence threshold behavior
+  - mlStorage: serialize/deserialize model state, handle corruption
+
+Integration tests:
+  - Full pipeline: description -> suggestion for known merchants
+  - Cold start behavior: 0 training records -> only layers 1+2
+  - Personalization: after 15 corrections, Bayes overrides keywords
+
+Acceptance rate monitoring (production):
+  - Add a lightweight analytics event (opt-in) for suggestion acceptance rate
+  - Target: >= 65% acceptance rate after 20+ training examples
+  - Alert: if acceptance rate drops below 40%, model drift may have occurred
+
+7.4 MAINTENANCE CONSIDERATIONS
+--------------------------------
+
+Merchant map updates:
+  - Add new merchants via app updates (not runtime fetches)
+  - Community-maintained list considered but risks supply chain issues;
+    prefer a curated, version-controlled list in the repo
+
+Model state versioning:
+  - Store version field in ModelState
+  - On version mismatch at load time, migrate or reset gracefully
+  - Never silently corrupt existing training data during upgrades
+
+localStorage key namespacing:
+  - Use prefix "expense_tracker_ml_" to avoid collisions
+  - Keys: "expense_tracker_ml_model", "expense_tracker_ml_training_records"
+
+Performance budgets:
+  - Inference (description -> suggestion): < 2ms
+  - Training update (one new record): < 1ms
+  - Model load from localStorage: < 10ms
+  - Bundle size increase: 0KB (no new dependencies)
+
+================================================================================
+IMPLEMENTATION ORDER SUMMARY
+================================================================================
+
+Step 1: src/lib/ml/types.ts               -- shared types
+Step 2: src/lib/ml/textPreprocessor.ts    -- tokenization pipeline
+Step 3: src/lib/ml/merchantMap.ts         -- 200-entry merchant lookup
+Step 4: src/lib/ml/keywordClassifier.ts   -- rule-based keyword scorer
+Step 5: src/lib/ml/naiveBayes.ts          -- Bayesian classifier (train+predict)
+Step 6: src/lib/ml/mlStorage.ts           -- localStorage persistence
+Step 7: src/lib/ml/categorizer.ts         -- score fusion entry point
+Step 8: src/context/MLContext.tsx          -- React context + training loop
+Step 9: src/hooks/useExpenseCategorizer.ts -- component-facing hook
+Step 10: src/components/SuggestionBadge.tsx -- suggestion UI component
+Step 11: src/components/ExpenseForm.tsx    -- integrate suggestion into form
+Step 12: Unit tests for all ML modules
+Step 13: Analytics page ML stats section
+Step 14: Settings page: reset model, toggle suggestions
+
+================================================================================
+KEY DESIGN DECISIONS SUMMARY
+================================================================================
+
+Decision                      Choice                  Rationale
+-------------------------------------------------------------------------------------
+Where to run ML?              Browser (client-side)   Privacy; no backend exists
+Which ML algorithm?           Naive Bayes (custom)    No deps; incremental; fast
+External ML library?          None                    Zero bundle cost; full control
+Model storage?                localStorage (JSON)     Already used by app; simple
+Training data format?         Token counts only       Privacy; compact; efficient
+Minimum training threshold?   10 labeled examples     Bayes needs some data to beat
+                                                       keyword rules
+Confidence threshold?         0.55                    Below this = no suggestion
+                                                       (avoids eroding trust)
+Suggestion UI?                Badge on dropdown       Non-intrusive; easy to ignore
+Opt-out?                      Yes (settings toggle)   User control; GDPR alignment
+Server data transmission?     None (Phase 1-3)        Privacy-by-design default
+================================================================================
+END OF DOCUMENT
+================================================================================
