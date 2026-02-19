@@ -50,7 +50,7 @@ export default function Navigation() {
 
           {/* Credits */}
           <span className="text-xs text-gray-400 hidden md:block">
-            Built by Naimesh Shah
+            Built by Naimesh Shah - feature-data-export-v3
           </span>
         </div>
       </div>

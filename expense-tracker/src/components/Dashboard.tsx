@@ -1,13 +1,14 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { useExpenses } from '@/context/ExpenseContext';
 import { ExpenseCategory, CATEGORIES, CATEGORY_COLORS, CATEGORY_ICONS } from '@/types/expense';
 import { formatCurrency } from '@/lib/utils';
-import { exportDashboardToPDF } from '@/lib/storage';
+import ExportHub from './ExportHub';
 
 export default function Dashboard() {
   const { expenses, isLoaded } = useExpenses();
+  const [showExportHub, setShowExportHub] = useState(false);
 
   const stats = useMemo(() => {
     const now = new Date();
@@ -76,18 +77,21 @@ export default function Dashboard() {
 
   return (
     <div className="space-y-6">
-      {/* Header with PDF export */}
+      {/* Export Hub drawer */}
+      {showExportHub && <ExportHub expenses={expenses} onClose={() => setShowExportHub(false)} />}
+
+      {/* Header with Export Hub button */}
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-bold text-gray-900">Dashboard</h2>
         <button
-          onClick={() => exportDashboardToPDF(expenses, stats.monthlyTrend)}
+          onClick={() => setShowExportHub(true)}
           disabled={expenses.length === 0}
-          className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 shadow-sm hover:shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
           </svg>
-          Export PDF
+          Export Hub
         </button>
       </div>
 

@@ -44,7 +44,7 @@ export default function Home() {
       {/* Credits */}
       <div className="mt-6 text-center py-4 border-t border-gray-100">
         <p className="text-sm text-gray-400">
-          Built with care by <span className="font-medium text-gray-600">Naimesh Shah</span>
+          Built with care by <span className="font-medium text-gray-600">Naimesh Shah</span> - feature-data-export-v3
         </p>
       </div>
     </div>
