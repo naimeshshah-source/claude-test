@@ -101,18 +101,6 @@ export default function MonthlyRecommendations() {
             >
               <div className="flex items-start justify-between mb-3">
                 <div>
-<<<<<<< HEAD
-                  <h3 className="text-xl font-bold text-slate-800 group-hover:text-blue-600 transition-colors">
-                    <span className="mr-1.5">{countryFlag(dest.countryCode)}</span>
-                    {dest.name}
-                  </h3>
-                  <p className="text-slate-500 text-sm">
-                    <span className="inline-flex items-center gap-1.5">
-                      {dest.country}
-                      <span className="bg-slate-100 text-slate-500 text-xs font-mono px-1.5 py-0.5 rounded">
-                        {dest.countryCode}
-                      </span>
-=======
                   <h3 className="text-xl font-bold text-slate-800 group-hover:text-blue-600 transition-colors flex items-center gap-2">
                     <Image
                       src={`https://flagcdn.com/w40/${dest.countryCode.toLowerCase()}.png`}
@@ -127,7 +115,6 @@ export default function MonthlyRecommendations() {
                     {dest.country}
                     <span className="bg-slate-100 text-slate-500 text-xs font-mono px-1.5 py-0.5 rounded">
                       {dest.countryCode}
->>>>>>> 603ebe820d0543c46b5721a1d66ed62624f14aff
                     </span>
                   </p>
                 </div>
