@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cream: #fdfcf7;
+  --ink: #1a1a1a;
+  --gain-green: #1f8a3a;
+  --loss-red: #c8341c;
+}
+
+html,
+body {
+  background-color: #fdfcf7;
+  color: #1a1a1a;
+}
